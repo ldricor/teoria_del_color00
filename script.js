@@ -1,12 +1,11 @@
-/* ===== SCRIPT.JS — Hash Router + Logic + Interactive Modules ===== */
+/* ===== SCRIPT.JS — Router + Lógica de módulos interactivos ===== */
 
 const PAGES = ['home','principios','contraste','buenos','malos','ecommerce','comparador','marca','reglas'];
 let currentPage = null;
 let contrastReady = false;
 let comparatorReady = false;
-let barsAnimated = false;
 
-/* ===== ROUTER ===== */
+/* ===== ROUTER (original, sin romper) ===== */
 function navigate(pageId) {
   if (!PAGES.includes(pageId)) pageId = 'home';
   if (pageId === currentPage) return;
@@ -38,7 +37,7 @@ navigate(location.hash.replace('#', '') || 'home');
 
 function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
 
-/* ===== MÓDULOS PRINCIPIOS ===== */
+/* ===== MÓDULOS PRINCIPIOS (mejorados: botones y cajas cambian con armonía y modelos) ===== */
 function initPrincipiosModules() {
   // 1. Modelos RGB/HEX/HSL
   const r = document.getElementById('mod-r');
@@ -49,6 +48,9 @@ function initPrincipiosModules() {
   const hexSpan = document.getElementById('mod-hex');
   const hslSpan = document.getElementById('mod-hsl');
   const demoArea = document.getElementById('mod-demo-area');
+  const demoBtns = demoArea ? demoArea.querySelectorAll('.demo-btn') : [];
+  const demoInputs = demoArea ? demoArea.querySelectorAll('.demo-input') : [];
+  const demoText = document.getElementById('mod-demo-text');
   
   function rgbToHex(r,g,b) { return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1); }
   function rgbToHsl(r,g,b) {
@@ -76,6 +78,11 @@ function initPrincipiosModules() {
     rgbSpan.textContent = `rgb(${red},${green},${blue})`;
     hexSpan.textContent = rgbToHex(red,green,blue);
     hslSpan.textContent = rgbToHsl(red,green,blue);
+    // Cambiar color de botones e inputs
+    const textColor = (red*0.299 + green*0.587 + blue*0.114) > 186 ? '#000000' : '#ffffff';
+    demoBtns.forEach(btn => { btn.style.backgroundColor = bgColor; btn.style.color = textColor; });
+    demoInputs.forEach(inp => { inp.style.backgroundColor = bgColor; inp.style.color = textColor; });
+    if(demoText) { demoText.style.backgroundColor = bgColor; demoText.style.color = textColor; demoText.style.padding = '4px 8px'; demoText.style.borderRadius = '8px'; }
   }
   if(r && g && b) { r.addEventListener('input', updateRGB); g.addEventListener('input', updateRGB); b.addEventListener('input', updateRGB); updateRGB(); }
 
@@ -96,11 +103,14 @@ function initPrincipiosModules() {
     });
   }
   
-  // 3. Armonías
+  // 3. Armonías con actualización de demo elements
   const baseColor = document.getElementById('harmony-base');
   const harmonyType = document.getElementById('harmony-type');
   const paletteDiv = document.getElementById('harmony-palette');
   const harmonyDemoArea = document.getElementById('harmony-demo-area');
+  const harmonyBtns = harmonyDemoArea ? harmonyDemoArea.querySelectorAll('.demo-btn') : [];
+  const harmonyInputs = harmonyDemoArea ? harmonyDemoArea.querySelectorAll('.demo-input') : [];
+  const harmonyText = document.getElementById('harmony-demo-text');
   
   function hexToRgb(hex) {
     let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
@@ -176,10 +186,29 @@ function initPrincipiosModules() {
       swatch.style.backgroundColor = col;
       swatch.addEventListener('click', () => {
         if(harmonyDemoArea) harmonyDemoArea.style.backgroundColor = col;
+        // Aplicar color a botones e inputs
+        let rgb = col.match(/\d+/g);
+        if(rgb && rgb.length>=3) {
+          let red = parseInt(rgb[0]), green = parseInt(rgb[1]), blue = parseInt(rgb[2]);
+          let textColor = (red*0.299 + green*0.587 + blue*0.114) > 186 ? '#000000' : '#ffffff';
+          harmonyBtns.forEach(btn => { btn.style.backgroundColor = col; btn.style.color = textColor; });
+          harmonyInputs.forEach(inp => { inp.style.backgroundColor = col; inp.style.color = textColor; });
+          if(harmonyText) { harmonyText.style.backgroundColor = col; harmonyText.style.color = textColor; }
+        }
       });
       paletteDiv.appendChild(swatch);
     });
-    if(colors[0] && harmonyDemoArea) harmonyDemoArea.style.backgroundColor = colors[0];
+    if(colors[0] && harmonyDemoArea) {
+      harmonyDemoArea.style.backgroundColor = colors[0];
+      let rgb = colors[0].match(/\d+/g);
+      if(rgb && rgb.length>=3) {
+        let red = parseInt(rgb[0]), green = parseInt(rgb[1]), blue = parseInt(rgb[2]);
+        let textColor = (red*0.299 + green*0.587 + blue*0.114) > 186 ? '#000000' : '#ffffff';
+        harmonyBtns.forEach(btn => { btn.style.backgroundColor = colors[0]; btn.style.color = textColor; });
+        harmonyInputs.forEach(inp => { inp.style.backgroundColor = colors[0]; inp.style.color = textColor; });
+        if(harmonyText) { harmonyText.style.backgroundColor = colors[0]; harmonyText.style.color = textColor; }
+      }
+    }
   }
   if(baseColor && harmonyType) { baseColor.addEventListener('input', updateHarmony); harmonyType.addEventListener('change', updateHarmony); updateHarmony(); }
 
@@ -210,11 +239,16 @@ function initPrincipiosModules() {
   const ruleHeader = document.querySelector('#rule-demo-area .rule-header');
   const ruleBody = document.querySelector('#rule-demo-area .rule-body');
   const ruleCta = document.querySelector('#rule-demo-area .rule-cta');
+  const ruleBtns = document.querySelectorAll('#rule-demo-area .demo-btn');
+  const ruleInputs = document.querySelectorAll('#rule-demo-area .demo-input');
   function updateRule() {
     let bg = rule60.value, sec = rule30.value, acc = rule10.value;
     if(ruleBody) ruleBody.style.backgroundColor = bg;
     if(ruleHeader) ruleHeader.style.backgroundColor = sec;
     if(ruleCta) ruleCta.style.backgroundColor = acc;
+    // Aplicar a botones extra
+    ruleBtns.forEach(btn => { btn.style.backgroundColor = acc; });
+    ruleInputs.forEach(inp => { inp.style.backgroundColor = bg; });
   }
   if(rule60 && rule30 && rule10) { rule60.addEventListener('input', updateRule); rule30.addEventListener('input', updateRule); rule10.addEventListener('input', updateRule); updateRule(); }
 }
@@ -335,10 +369,22 @@ function initPsychoModule() {
 
 /* ===== COMPARATOR ORIGINAL ===== */
 const scenarios = {
-  ecommerce: { bad: `<div style="background:#ff6600;...">...</div>`, good: `...`, explanation: `...` },
-  dashboard: { bad: `...`, good: `...`, explanation: `...` },
-  login: { bad: `...`, good: `...`, explanation: `...` },
-  alerts: { bad: `...`, good: `...`, explanation: `...` }
+  ecommerce: { bad: `<div style="background:#ff6600;padding:14px;border-radius:8px;margin-bottom:8px;"><div style="color:#ff0000;font-size:0.9rem;font-weight:800;">¡¡OFERTA ESPECIAL!!</div><div style="color:#ffff00;font-size:1.2rem;font-weight:900;">Laptop Gaming</div><div style="color:#00ff00;font-size:0.8rem;">Ahorra $500 hoy solamente</div><div style="background:#ff00ff;color:#00ffff;padding:8px 14px;border-radius:6px;display:inline-block;">COMPRAR AHORA</div></div><div style="display:flex;gap:6px;flex-wrap:wrap;"><span style="background:#ff0000;color:#ffff00;padding:4px 10px;border-radius:20px;">NUEVO</span><span style="background:#00cc00;color:#ff00ff;padding:4px 10px;border-radius:20px;">POPULAR</span><span style="background:#0000ff;color:#ff8800;padding:4px 10px;border-radius:20px;">TOP VENTAS</span></div><p style="color:#f87171;font-size:0.7rem;">❌ Demasiados colores, legibilidad baja</p>`,
+    good: `<div style="background:#0f172a;padding:14px;border-radius:8px;"><div style="background:#f97316;color:#fff;display:inline-block;padding:3px 8px;border-radius:20px;margin-bottom:8px;">Oferta 48h</div><div style="color:#f1f5f9;font-size:1.1rem;font-weight:800;">Laptop Gaming Pro</div><div style="color:#94a3b8;font-size:0.8rem;">Ahorra $500</div><div><span style="color:#fff;font-size:1.3rem;font-weight:900;">$899</span><span style="color:#64748b;text-decoration:line-through;">$1,399</span></div><button style="background:#f97316;color:#fff;border:none;padding:10px;border-radius:8px;width:100%;">Agregar al Carrito</button></div><p style="color:#4ade80;font-size:0.7rem;">✓ Un solo acento, jerarquía clara</p>`,
+    explanation: `<strong>E-commerce:</strong> El diseño incorrecto usa múltiples colores saturados creando caos. El correcto usa paleta oscura con único acento.`
+  },
+  dashboard: { bad: `<div style="background:#ffffff;padding:14px;"><div style="color:#aaaaaa;">Dashboard</div><div><div style="background:#f0f0f0;padding:10px;"><div style="color:#cccccc;">2.4K</div><div style="color:#dddddd;">Usuarios</div></div><div style="background:#f5f5f5;padding:10px;"><div style="color:#c8c8c8;">87%</div><div style="color:#d5d5d5;">Conversión</div></div></div><p style="color:#ef4444;">❌ Contraste bajo, ilegible</p></div>`,
+    good: `<div style="background:#0f172a;padding:14px;"><div style="color:#f1f5f9;">Dashboard</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:#1e293b;padding:10px;"><div style="color:#60a5fa;">2.4K</div><div style="color:#94a3b8;">Usuarios</div><div style="color:#4ade80;">↑ 12%</div></div><div style="background:#1e293b;padding:10px;"><div style="color:#a78bfa;">87%</div><div style="color:#94a3b8;">Conversión</div><div style="color:#f87171;">↓ 2.1%</div></div></div><p style="color:#4ade80;">✓ Contraste excelente</p></div>`,
+    explanation: `<strong>Dashboard:</strong> El mal diseño usa grises claros sobre blanco (ratio 1.5:1). El correcto usa modo oscuro con buena legibilidad.`
+  },
+  login: { bad: `<div style="background:linear-gradient(135deg,#FF0080,#FF8C00);padding:20px;"><div style="color:#FF00FF;">Iniciar Sesión</div><input placeholder="Correo" readonly style="background:#FF4500;color:#FFFF00;"><input placeholder="Contraseña" readonly style="background:#8B00FF;color:#00FFFF;"><button style="background:#00FF00;color:#FF0000;">ENTRAR</button><p style="color:#000080;">❌ Sobrecarga de colores</p></div>`,
+    good: `<div style="background:#fff;padding:20px;border-radius:12px;"><div style="color:#0f172a;font-size:1.1rem;">Bienvenido</div><input value="usuario@ejemplo.com" readonly style="background:#f8fafc;border:1px solid #e2e8f0;"><input value="●●●●●●" readonly style="background:#f8fafc;border:1px solid #e2e8f0;"><button style="background:#4f46e5;color:#fff;border:none;padding:11px;">Iniciar Sesión</button><p style="color:#22c55e;">✓ Limpio y funcional</p></div>`,
+    explanation: `<strong>Login:</strong> El diseño incorrecto genera desconfianza. El correcto es neutro y profesional.`
+  },
+  alerts: { bad: `<div><div style="background:#ff0000;color:#fff;">Tu pago fue procesado exitosamente</div><div style="background:#00cc00;color:#fff;">Error: correo ya registrado</div><div style="background:#0000ff;color:#0000cc;">Info disponible</div><p style="color:#f87171;">❌ Semántica invertida</p></div>`,
+    good: `<div><div style="background:#f0fdf4;border:1px solid #bbf7d0;padding:12px;"><span style="color:#16a34a;">✓</span> Pago Exitoso</div><div style="background:#fef2f2;border:1px solid #fecaca;padding:12px;"><span style="color:#dc2626;">✕</span> Error de Validación</div><div style="background:#fffbeb;border:1px solid #fde68a;padding:12px;"><span style="color:#d97706;">⚠</span> Advertencia</div><p style="color:#4ade80;">✓ Semántica correcta</p></div>`,
+    explanation: `<strong>Alertas:</strong> El diseño incorrecto invierte significados (verde para error). El correcto sigue convenciones universales.`
+  }
 };
 function setScenario(key) {
   document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.remove('active'));
