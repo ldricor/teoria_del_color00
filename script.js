@@ -291,3 +291,265 @@ function initAccessBars() {
     });
   }, 300);
 }
+
+
+/* ============================================================
+   LABORATORIO INTERACTIVO (NUEVO)
+   ============================================================ */
+
+function initLaboratorio() {
+  // Verificar si estamos en la página laboratorio
+  const labPage = document.getElementById('page-laboratorio');
+  if (!labPage) return;
+
+  // ----- 1. MODELOS RGB/HEX/HSL -----
+  const r = document.getElementById('lab-r');
+  const g = document.getElementById('lab-g');
+  const b = document.getElementById('lab-b');
+  const preview = document.getElementById('lab-preview');
+  const rgbSpan = document.getElementById('lab-rgb');
+  const hexSpan = document.getElementById('lab-hex');
+  const hslSpan = document.getElementById('lab-hsl');
+
+  function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+  function rgbToHsl(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) h = s = 0;
+    else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return `hsl(${Math.round(h * 360)}°, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+  }
+
+  function updateRGB() {
+    let red = parseInt(r.value), green = parseInt(g.value), blue = parseInt(b.value);
+    preview.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    rgbSpan.textContent = `rgb(${red}, ${green}, ${blue})`;
+    hexSpan.textContent = rgbToHex(red, green, blue);
+    hslSpan.textContent = rgbToHsl(red, green, blue);
+  }
+  if (r && g && b) {
+    r.addEventListener('input', updateRGB);
+    g.addEventListener('input', updateRGB);
+    b.addEventListener('input', updateRGB);
+    updateRGB();
+  }
+
+  // ----- 2. CÍRCULO CROMÁTICO -----
+  const circleContainer = document.getElementById('chromatic-circle');
+  const circleFeedback = document.getElementById('circle-feedback');
+  const selectedHueDiv = document.getElementById('selected-hue');
+  if (circleContainer) {
+    const hues = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+    hues.forEach(hue => {
+      const swatch = document.createElement('div');
+      swatch.className = 'circle-hue';
+      swatch.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+      swatch.setAttribute('data-hue', hue);
+      swatch.addEventListener('click', () => {
+        circleFeedback.textContent = `Matiz (Hue) seleccionado: ${hue}°`;
+        if (selectedHueDiv) selectedHueDiv.innerHTML = `🎨 Color HSL: hsl(${hue}°, 100%, 50%)`;
+      });
+      circleContainer.appendChild(swatch);
+    });
+  }
+
+  // ----- 3. ARMONÍAS -----
+  const baseColor = document.getElementById('harmony-base');
+  const harmonyType = document.getElementById('harmony-type');
+  const paletteDiv = document.getElementById('harmony-palette');
+
+  function hexToRgb(hex) {
+    let r = parseInt(hex.slice(1,3), 16), g = parseInt(hex.slice(3,5), 16), b = parseInt(hex.slice(5,7), 16);
+    return [r, g, b];
+  }
+  function rgbToHslArray(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) h = s = 0;
+    else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return [h, s, l];
+  }
+  function hslToRgb(h, s, l) {
+    let r, g, b;
+    if (s === 0) r = g = b = l;
+    else {
+      const hue2rgb = (p, q, t) => {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1/6) return p + (q - p) * 6 * t;
+        if (t < 1/2) return q;
+        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        return p;
+      };
+      let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      let p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1/3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1/3);
+    }
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  }
+
+  function updateHarmony() {
+    let hex = baseColor.value;
+    let [r0, g0, b0] = hexToRgb(hex);
+    let [h, s, l] = rgbToHslArray(r0, g0, b0);
+    let colors = [];
+    let type = harmonyType.value;
+    if (type === 'mono') {
+      for (let i = 0; i < 4; i++) {
+        let newL = Math.min(0.9, Math.max(0.1, l + (i - 1.5) * 0.15));
+        let [rr, gg, bb] = hslToRgb(h, s, newL);
+        colors.push(`rgb(${rr},${gg},${bb})`);
+      }
+    } else if (type === 'comp') {
+      let h2 = (h + 0.5) % 1;
+      let [rr, gg, bb] = hslToRgb(h2, s, l);
+      colors.push(`rgb(${r0},${g0},${b0})`, `rgb(${rr},${gg},${bb})`);
+    } else if (type === 'analoga') {
+      let h1 = (h + 0.1) % 1, h2 = (h - 0.1 + 1) % 1;
+      let [r1, g1, b1] = hslToRgb(h1, s, l);
+      let [r2, g2, b2] = hslToRgb(h2, s, l);
+      colors.push(`rgb(${r0},${g0},${b0})`, `rgb(${r1},${g1},${b1})`, `rgb(${r2},${g2},${b2})`);
+    } else if (type === 'triadica') {
+      let h2 = (h + 1/3) % 1, h3 = (h + 2/3) % 1;
+      let [r1, g1, b1] = hslToRgb(h2, s, l);
+      let [r2, g2, b2] = hslToRgb(h3, s, l);
+      colors.push(`rgb(${r0},${g0},${b0})`, `rgb(${r1},${g1},${b1})`, `rgb(${r2},${g2},${b2})`);
+    }
+    paletteDiv.innerHTML = '';
+    colors.forEach(col => {
+      let swatch = document.createElement('div');
+      swatch.className = 'harmony-swatch';
+      swatch.style.backgroundColor = col;
+      swatch.title = col;
+      paletteDiv.appendChild(swatch);
+    });
+  }
+  if (baseColor && harmonyType) {
+    baseColor.addEventListener('input', updateHarmony);
+    harmonyType.addEventListener('change', updateHarmony);
+    updateHarmony();
+  }
+
+  // ----- 4. SIMULADOR DALTONISMO -----
+  const daltonSelect = document.getElementById('dalton-filter');
+  const daltonSample = document.getElementById('dalton-sample');
+  if (daltonSelect && daltonSample) {
+    // Inyectar filtros SVG si no existen
+    if (!document.getElementById('dalton-filters')) {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("style", "position:absolute; width:0; height:0");
+      svg.setAttribute("id", "dalton-filters");
+      svg.innerHTML = `
+        <filter id="protanopia"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0  0.558,0.442,0,0,0  0,0.242,0.758,0,0  0,0,0,1,0"/></filter>
+        <filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0  0.7,0.3,0,0,0  0,0.3,0.7,0,0  0,0,0,1,0"/></filter>
+        <filter id="tritanopia"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0  0,0.433,0.567,0,0  0,0.475,0.525,0,0  0,0,0,1,0"/></filter>
+      `;
+      document.body.appendChild(svg);
+    }
+    function applyFilter(type) {
+      if (type === 'none') daltonSample.style.filter = 'none';
+      else if (type === 'protanopia') daltonSample.style.filter = 'url(#protanopia)';
+      else if (type === 'deuteranopia') daltonSample.style.filter = 'url(#deuteranopia)';
+      else if (type === 'tritanopia') daltonSample.style.filter = 'url(#tritanopia)';
+    }
+    daltonSelect.addEventListener('change', (e) => applyFilter(e.target.value));
+    applyFilter('none');
+  }
+
+  // ----- 5. PSICOLOGÍA DEL COLOR -----
+  const psychoGrid = document.getElementById('psycho-grid');
+  const psychoMsg = document.getElementById('psycho-message');
+  const colorsPsycho = [
+    { name: 'Rojo', hex: '#ef4444', text: '🔴 <strong>Rojo</strong>: alerta, error, pasión. En China: buena suerte. Ideal para botones destructivos o urgencia.' },
+    { name: 'Verde', hex: '#22c55e', text: '🟢 <strong>Verde</strong>: éxito, confirmación, naturaleza. Cuidado: en algunos países asiáticos puede representar pérdida en bolsa.' },
+    { name: 'Azul', hex: '#3b82f6', text: '🔵 <strong>Azul</strong>: confianza, seguridad, profesionalismo. Usado por bancos y tech. En exceso, frío.' },
+    { name: 'Amarillo', hex: '#facc15', text: '🟡 <strong>Amarillo</strong>: advertencia, optimismo. Alta luminosidad; puede fatigar si se usa en exceso.' },
+    { name: 'Naranja', hex: '#f97316', text: '🟠 <strong>Naranja</strong>: energía, acción, creatividad. Ideal para CTAs secundarios.' },
+    { name: 'Morado', hex: '#a855f7', text: '🟣 <strong>Morado</strong>: lujo, creatividad, misterio. Marcas premium y cosméticos.' },
+    { name: 'Negro', hex: '#111111', text: '⚫ <strong>Negro</strong>: elegancia, poder, sofisticación. Modo oscuro, lujo. No usar #000000 puro.' },
+    { name: 'Blanco', hex: '#ffffff', text: '⚪ <strong>Blanco</strong>: pureza, limpieza, minimalismo. Base para modo claro. Puede ser estéril en exceso.' }
+  ];
+  if (psychoGrid) {
+    colorsPsycho.forEach(c => {
+      const chip = document.createElement('div');
+      chip.className = 'psycho-chip';
+      chip.style.backgroundColor = c.hex;
+      chip.style.border = c.name === 'Blanco' ? '1px solid #aaa' : 'none';
+      chip.addEventListener('click', () => {
+        psychoMsg.innerHTML = c.text;
+      });
+      psychoGrid.appendChild(chip);
+    });
+  }
+
+  // ----- 6. REGLA 60-30-10 -----
+  const ruleBg = document.getElementById('rule-bg');
+  const ruleSecondary = document.getElementById('rule-secondary');
+  const ruleAccent = document.getElementById('rule-accent');
+  const ruleDemo = document.getElementById('rule-demo');
+  if (ruleBg && ruleSecondary && ruleAccent && ruleDemo) {
+    function updateRuleDemo() {
+      const bg = ruleBg.value;
+      const secondary = ruleSecondary.value;
+      const accent = ruleAccent.value;
+      ruleDemo.style.setProperty('--rule-bg', bg);
+      ruleDemo.style.setProperty('--rule-secondary', secondary);
+      ruleDemo.style.setProperty('--rule-accent', accent);
+      const header = ruleDemo.querySelector('.rule-header');
+      const body = ruleDemo.querySelector('.rule-body');
+      const cta = ruleDemo.querySelector('.rule-cta');
+      if (header) header.style.backgroundColor = secondary;
+      if (body) body.style.backgroundColor = bg;
+      if (cta) cta.style.backgroundColor = accent;
+    }
+    ruleBg.addEventListener('input', updateRuleDemo);
+    ruleSecondary.addEventListener('input', updateRuleDemo);
+    ruleAccent.addEventListener('input', updateRuleDemo);
+    updateRuleDemo();
+  }
+}
+
+// Extender la navegación para que ejecute initLaboratorio cuando se llegue a esa página
+const originalNav = window.navigate;
+if (typeof originalNav === 'function') {
+  window.navigate = function(pageId) {
+    originalNav(pageId);
+    if (pageId === 'laboratorio') {
+      setTimeout(initLaboratorio, 60);
+    }
+  };
+} else {
+  window.navigate = function(pageId) {
+    // fallback por si no existe (no debería ocurrir)
+    if (pageId === 'laboratorio') setTimeout(initLaboratorio, 60);
+  };
+}
+
+// Si la página actual es laboratorio al cargar, inicializar
+if (window.location.hash === '#laboratorio') {
+  setTimeout(initLaboratorio, 100);
+}
