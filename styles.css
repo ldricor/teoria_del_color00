@@ -1199,3 +1199,258 @@ input[type="color"] {
 @media (max-width: 480px) {
   .home-cards { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ============================================================
+   LAB
+   ============================================================ */
+.lab-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s;
+}
+
+.lab-card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.lab-control-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.lab-slider {
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+  accent-color: var(--primary);
+}
+
+.lab-color-preview {
+  width: 100%;
+  height: 80px;
+  border-radius: 1rem;
+  border: 1px solid var(--border-bright);
+  transition: background 0.1s;
+}
+
+.lab-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-3);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.lab-note {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Círculo cromático */
+.chromatic-circle {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+.circle-hue {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s, border 0.1s;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.circle-hue:hover {
+  transform: scale(1.05);
+  border-color: #fff;
+}
+.circle-feedback, .selected-hue-display {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
+.selected-hue-display {
+  background: rgba(255,255,255,0.05);
+  padding: 6px;
+  border-radius: 20px;
+}
+
+/* Armonías */
+.harmony-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.harmony-controls label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.harmony-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  min-height: 70px;
+}
+.harmony-swatch {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  transition: transform 0.1s;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.harmony-swatch:hover {
+  transform: scale(1.05);
+}
+
+/* Daltonismo */
+.lab-select {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font);
+}
+.dalton-sample {
+  margin-top: 12px;
+  background: var(--bg-2);
+  border-radius: 12px;
+  padding: 12px;
+  transition: filter 0.2s;
+}
+.dalton-color-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.dalton-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+.dalton-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ef4444;
+  background: #1e293b;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.dalton-gradient {
+  height: 20px;
+  background: linear-gradient(90deg, #ef4444, #22c55e, #3b82f6, #facc15, #a855f7);
+  border-radius: 10px;
+}
+
+/* Psicología */
+.psycho-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 10px 0;
+}
+.psycho-chip {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.psycho-chip:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.psycho-message {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  min-height: 80px;
+}
+
+/* Regla 60-30-10 */
+.rule-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.rule-controls div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+.rule-demo {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.rule-header {
+  padding: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.rule-body {
+  padding: 16px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rule-cta {
+  border: none;
+  border-radius: 40px;
+  padding: 8px 16px;
+  font-weight: 700;
+  cursor: default;
+  font-family: inherit;
+  width: fit-content;
+}
+.rule-note-text {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+.lab-conclusion {
+  margin-top: 32px;
+  background: rgba(99,102,241,0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(99,102,241,0.2);
+  text-align: center;
+}
+.lab-conclusion h4 {
+  font-family: var(--font-display);
+  margin-bottom: 8px;
+}
+.lab-conclusion p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
