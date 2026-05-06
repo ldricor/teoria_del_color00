@@ -1,3 +1,4 @@
+/* ===== ESTILOS ORIGINALES DE TU COMPAÑERO (se mantienen intactos) ===== */
 *,
 *::before,
 *::after {
@@ -40,7 +41,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   height: 100vh;
-  overflow-y: hidden; /* El scroll se maneja dentro de .page */
+  overflow-y: hidden; /* el scroll se maneja dentro de .page */
 }
 
 ::-webkit-scrollbar {
@@ -157,7 +158,7 @@ body {
   background: var(--primary);
 }
 
-/* PAGES SYSTEM */
+/* PAGES SYSTEM (corregido para scroll vertical) */
 .pages-container {
   position: fixed;
   top: var(--nav-h);
@@ -169,7 +170,7 @@ body {
 .page {
   position: absolute;
   inset: 0;
-  overflow-y: auto; /* importante para que scrollee */
+  overflow-y: auto; /* esto permite scroll en cada página */
   display: none;
   flex-direction: column;
   opacity: 0;
@@ -485,14 +486,15 @@ body {
   color: var(--text-muted);
 }
 
-/* INTERACTIVE MODULES (nuevos) */
-.interactive-module,
+/* ===== NUEVOS ESTILOS PARA MÓDULOS INTERACTIVOS (no afectan al original) ===== */
 .extra-module {
-  margin: 32px 0;
+  max-width: 1200px;
+  margin: 40px auto 40px auto;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
+  width: calc(100% - 48px);
 }
 .module-title {
   font-family: var(--font-display);
@@ -553,8 +555,9 @@ body {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  cursor: default;
+  cursor: pointer;
   font-family: inherit;
+  transition: 0.1s;
 }
 .demo-input {
   background: rgba(255, 255, 255, 0.1);
@@ -603,35 +606,6 @@ body {
 .harmony-swatch:hover {
   transform: scale(1.05);
 }
-.rule-demo-container {
-  border-radius: 12px;
-  overflow: hidden;
-}
-.rule-header {
-  padding: 12px;
-  text-align: center;
-  font-weight: 600;
-  color: white;
-}
-.rule-body {
-  padding: 20px;
-  text-align: center;
-}
-.rule-cta {
-  border: none;
-  border-radius: 40px;
-  padding: 8px 20px;
-  font-weight: 700;
-  cursor: default;
-  margin: 10px auto;
-}
-.extra-demo {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
 .psycho-grid {
   display: flex;
   flex-wrap: wrap;
@@ -675,6 +649,9 @@ body {
   }
   .page-inner {
     padding: 32px 16px 0;
+  }
+  .extra-module {
+    width: calc(100% - 32px);
   }
 }
 @keyframes float {
