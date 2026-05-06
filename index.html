@@ -19,7 +19,7 @@
       <li><a href="#home"        class="nav-link" data-page="home">Inicio</a></li>
       <li><a href="#principios"  class="nav-link" data-page="principios">Principios</a></li>
       <li><a href="#contraste"   class="nav-link" data-page="contraste">Contraste</a></li>
-      <li><a href="#buenos"      class="nav-link" data-page="buenos">Buenos</a></li>
+      <li><a href="#buenos"      class="nav-link" data-page="buenos"> Buenos</a></li>
       <li><a href="#malos"       class="nav-link" data-page="malos">Malos</a></li>
       <li><a href="#ecommerce"   class="nav-link" data-page="ecommerce">E-Commerce</a></li>
       <li><a href="#comparador"  class="nav-link" data-page="comparador">Comparador</a></li>
@@ -44,129 +44,1368 @@
 
   <!-- ===== PAGE WRAPPER ===== -->
   <div class="pages-container">
-    <!-- ... (todas las páginas originales se mantienen intactas: home, principios, contraste, buenos, malos, ecommerce, comparador, marca, reglas) ... -->
-    <!-- Por razones de espacio en esta respuesta, omito repetir el HTML de esas páginas. Pero en el archivo final que te entregaré, están completas. -->
-    <!-- He preservado exactamente el mismo contenido que tenía tu compañero desde home hasta reglas. -->
+    
+    <!-- =================== PAGE: HOME =================== -->
+    <div class="page" id="page-home">
+      <div class="hero-bg"></div>
+      <div class="color-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">Guía Interactiva</div>
+        <h1 class="hero-title">
+          Teoría del Color<br />
+          <span class="gradient-text">en Interfaces</span>
+        </h1>
+        <p class="hero-subtitle">
+          Explora cómo el color puede elevar o destruir la experiencia de usuario.<br />
+          Casos reales, comparaciones visuales y principios esenciales.
+        </p>
+        
+        <div class="project-credits" style="margin-bottom: 32px; padding: 14px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-muted); font-size: 0.85rem; text-align: center;">
+          <div style="color: #fff; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem;">Materia: Factores Humanos</div>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <span>Daniel Velandia – 20191020140</span>
+            <span>Ludwind Rico – 20202020003</span>
+          </div>
+        </div>
 
-    <!-- =================== PAGE: LABORATORIO (NUEVA) =================== -->
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="navigate('principios')">Explorar Principios →</button>
+          <button class="btn btn-ghost" onclick="navigate('comparador')">Ver Comparador</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat" onclick="navigate('principios')" style="cursor:pointer">
+            <span class="stat-num">8</span><span class="stat-label">Principios</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat" onclick="navigate('buenos')" style="cursor:pointer">
+            <span class="stat-num">6</span><span class="stat-label">Buenos Usos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat" onclick="navigate('malos')" style="cursor:pointer">
+            <span class="stat-num">6</span><span class="stat-label">Malos Usos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat" onclick="navigate('reglas')" style="cursor:pointer">
+            <span class="stat-num">7</span><span class="stat-label">Reglas de Oro</span>
+          </div>
+        </div>
+        <!-- Quick-nav cards -->
+        <div class="home-cards">
+          <div class="home-card" onclick="navigate('principios')">
+            <div class="home-card-icon">🎨</div>
+            <div class="home-card-title">Principios</div>
+            <div class="home-card-desc">Armonía, contraste, psicología y más</div>
+          </div>
+          <div class="home-card" onclick="navigate('contraste')">
+            <div class="home-card-icon">⚡</div>
+            <div class="home-card-title">Calculadora</div>
+            <div class="home-card-desc">Verifica ratios WCAG en tiempo real</div>
+          </div>
+          <div class="home-card good-home-card" onclick="navigate('buenos')">
+            <div class="home-card-icon"></div>
+            <div class="home-card-title">Buenos Usos</div>
+            <div class="home-card-desc">6 patrones que elevan la UX</div>
+          </div>
+          <div class="home-card bad-home-card" onclick="navigate('malos')">
+            <div class="home-card-icon">✗</div>
+            <div class="home-card-title">Malos Usos</div>
+            <div class="home-card-desc">6 errores comunes que evitar</div>
+          </div>
+          <div class="home-card" onclick="navigate('ecommerce')">
+            <div class="home-card-icon">🛍️</div>
+            <div class="home-card-title">E-Commerce</div>
+            <div class="home-card-desc">Caso de estudio comparativo</div>
+          </div>
+          <div class="home-card" onclick="navigate('comparador')">
+            <div class="home-card-icon">↔</div>
+            <div class="home-card-title">Comparador</div>
+            <div class="home-card-desc">Diseños correctos vs incorrectos</div>
+          </div>
+          <div class="home-card" onclick="navigate('marca')">
+            <div class="home-card-icon">🏷️</div>
+            <div class="home-card-title">Identidad</div>
+            <div class="home-card-desc">Color e identidad de marca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: PRINCIPIOS =================== -->
+    <div class="page" id="page-principios">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag">Fundamentos</div>
+          <h2 class="section-title">Principios de la Teoría del Color</h2>
+          <p class="section-desc">Los pilares que definen cómo percibimos y usamos el color en el diseño de producto.</p>
+        </div>
+        <div class="principles-grid">
+          <div class="principle-card">
+            <div class="principle-icon">🔵</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#1E3A5F"></div>
+              <div class="wheel-swatch" style="background:#2563EB"></div>
+              <div class="wheel-swatch" style="background:#60A5FA"></div>
+              <div class="wheel-swatch" style="background:#BFDBFE"></div>
+            </div>
+            <h3>Armonía Cromática</h3>
+            <p>Colores que trabajan juntos de forma coherente. Paletas monocromáticas, análogas o complementarias crean experiencias cohesivas.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">⚡</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#1A1A1A"></div>
+              <div class="wheel-swatch" style="background:#F59E0B"></div>
+              <div class="wheel-swatch" style="background:#FBBF24"></div>
+              <div class="wheel-swatch" style="background:#FEF3C7"></div>
+            </div>
+            <h3>Contraste</h3>
+            <p>La diferencia de luminosidad entre fondo y texto. WCAG recomienda un ratio mínimo de 4.5:1 para texto normal y 3:1 para texto grande.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">🟢</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#052e16"></div>
+              <div class="wheel-swatch" style="background:#16a34a"></div>
+              <div class="wheel-swatch" style="background:#4ade80"></div>
+              <div class="wheel-swatch" style="background:#dcfce7"></div>
+            </div>
+            <h3>Psicología del Color</h3>
+            <p>Cada color evoca emociones. El verde = confianza/éxito. El rojo = urgencia/error. El azul = calma/profesional. Úsalos con intención.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">👁️</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#581c87"></div>
+              <div class="wheel-swatch" style="background:#9333ea"></div>
+              <div class="wheel-swatch" style="background:#c084fc"></div>
+              <div class="wheel-swatch" style="background:#f3e8ff"></div>
+            </div>
+            <h3>Jerarquía Visual</h3>
+            <p>El color guía la vista del usuario. Los elementos más importantes deben tener colores más saturados o con mayor contraste.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">♿</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#7c3aed"></div>
+              <div class="wheel-swatch" style="background:#f97316"></div>
+              <div class="wheel-swatch" style="background:#eab308"></div>
+              <div class="wheel-swatch" style="background:#22c55e"></div>
+            </div>
+            <h3>Accesibilidad</h3>
+            <p>El 8% de los hombres tiene algún tipo de daltonismo. No uses el color como único elemento diferenciador de información.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">🌡️</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#7c2d12"></div>
+              <div class="wheel-swatch" style="background:#ea580c"></div>
+              <div class="wheel-swatch" style="background:#0ea5e9"></div>
+              <div class="wheel-swatch" style="background:#e0f2fe"></div>
+            </div>
+            <h3>Temperatura del Color</h3>
+            <p>Colores cálidos (rojo, naranja) generan urgencia y energía. Colores fríos (azul, verde) generan calma y confianza.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">🎯</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#134e4a"></div>
+              <div class="wheel-swatch" style="background:#0d9488"></div>
+              <div class="wheel-swatch" style="background:#2dd4bf"></div>
+              <div class="wheel-swatch" style="background:#ccfbf1"></div>
+            </div>
+            <h3>Regla 60-30-10</h3>
+            <p>60% color dominante (fondos), 30% color secundario (componentes), 10% color de acento (CTAs y elementos de énfasis).</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-icon">🌑</div>
+            <div class="principle-wheel">
+              <div class="wheel-swatch" style="background:#0f0f0f"></div>
+              <div class="wheel-swatch" style="background:#1f1f1f"></div>
+              <div class="wheel-swatch" style="background:#2f2f2f"></div>
+              <div class="wheel-swatch" style="background:#e2e8f0"></div>
+            </div>
+            <h3>Modo Oscuro</h3>
+            <p>No es simplemente invertir colores. Usa grises elevados, reduce la saturación y asegura contraste suficiente en todos los estados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('home')">← Inicio</button>
+        <span class="page-indicator">2 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('contraste')">Calculadora →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: CONTRASTE =================== -->
+    <div class="page" id="page-contraste">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag">Herramienta</div>
+          <h2 class="section-title">Calculadora de Contraste</h2>
+          <p class="section-desc">Prueba combinaciones de colores y ve en tiempo real si cumplen los estándares de accesibilidad WCAG 2.1.</p>
+        </div>
+        <div class="contrast-tool">
+          <div class="contrast-inputs">
+            <div class="color-picker-group">
+              <label for="bg-color">Color de Fondo</label>
+              <div class="picker-row">
+                <input type="color" id="bg-color" value="#1e1b4b" />
+                <span id="bg-hex">#1e1b4b</span>
+              </div>
+            </div>
+            <div class="contrast-arrow">⟷</div>
+            <div class="color-picker-group">
+              <label for="text-color">Color de Texto</label>
+              <div class="picker-row">
+                <input type="color" id="text-color" value="#ffffff" />
+                <span id="text-hex">#ffffff</span>
+              </div>
+            </div>
+          </div>
+          <div class="contrast-preview">
+            <div class="preview-box" id="preview-box">
+              <p class="preview-large">Heading Grande</p>
+              <p class="preview-normal">Este es un texto de tamaño normal. La legibilidad es fundamental para una buena experiencia de usuario en cualquier interfaz digital.</p>
+              <p class="preview-small">Texto pequeño (14px) — más difícil de leer con poco contraste</p>
+            </div>
+            <div class="contrast-result">
+              <div class="ratio-display">
+                <span class="ratio-num" id="ratio-num">15.64</span>
+                <span class="ratio-label">Ratio de Contraste</span>
+              </div>
+              <div class="wcag-badges">
+                <div class="wcag-badge" id="badge-aa-normal"><span class="badge-label">AA Normal</span><span class="badge-status"> Pasa</span></div>
+                <div class="wcag-badge" id="badge-aa-large"><span class="badge-label">AA Grande</span><span class="badge-status"> Pasa</span></div>
+                <div class="wcag-badge" id="badge-aaa-normal"><span class="badge-label">AAA Normal</span><span class="badge-status"> Pasa</span></div>
+                <div class="wcag-badge" id="badge-aaa-large"><span class="badge-label">AAA Grande</span><span class="badge-status"> Pasa</span></div>
+              </div>
+              <div class="preset-swatches">
+                <span class="preset-label">Presets:</span>
+                <button class="preset-btn" onclick="setPreset('#ffffff','#000000')" title="Blanco / Negro">⬜⬛</button>
+                <button class="preset-btn" onclick="setPreset('#1e1b4b','#ffffff')" title="Índigo / Blanco">🟣⬜</button>
+                <button class="preset-btn" onclick="setPreset('#fef9c3','#854d0e')" title="Amarillo / Marrón">🟡🟤</button>
+                <button class="preset-btn bad" onclick="setPreset('#ef4444','#ff7f7f')" title="Rojo / Rojo claro (MAL)">🔴🩷</button>
+                <button class="preset-btn bad" onclick="setPreset('#cccccc','#ffffff')" title="Gris / Blanco (MAL)">⬜🩶</button>
+              </div>
+            </div>
+          </div>
+          <div class="wcag-legend">
+            <div class="wcag-legend-item"><strong>AA Normal:</strong> ratio ≥ 4.5:1 — texto regular (16px+)</div>
+            <div class="wcag-legend-item"><strong>AA Grande:</strong> ratio ≥ 3:1 — headings (18px+ o bold 14px+)</div>
+            <div class="wcag-legend-item"><strong>AAA Normal:</strong> ratio ≥ 7:1 — texto pequeño accesible</div>
+            <div class="wcag-legend-item"><strong>AAA Grande:</strong> ratio ≥ 4.5:1 — headings con máxima accesibilidad</div>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('principios')">← Principios</button>
+        <span class="page-indicator">3 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('buenos')">Buenos Usos →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: BUENOS CASOS =================== -->
+    <div class="page" id="page-buenos">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag good-tag">Buenos Casos</div>
+          <h2 class="section-title">Ejemplos que <span class="text-good">funcionan</span></h2>
+          <p class="section-desc">Estos patrones mejoran la experiencia, guían al usuario y comunican información de forma efectiva.</p>
+        </div>
+        <div class="cases-grid">
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge">Bueno</div>
+            <h3 class="case-title">Jerarquía Visual Clara</h3>
+            <p class="case-desc">El color refuerza la importancia relativa de los elementos. El CTA principal destaca inmediatamente.</p>
+            <div class="case-demo">
+              <div class="demo-good-hierarchy">
+                <div class="gh-header">Panel de Control</div>
+                <div class="gh-body">
+                  <p class="gh-text">Selecciona una acción para continuar con el proceso de creación de tu cuenta.</p>
+                  <div class="gh-actions">
+                    <button class="gh-btn-primary">Crear Cuenta</button>
+                    <button class="gh-btn-secondary">Ver Demo</button>
+                    <button class="gh-btn-ghost">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                Colores por prioridad: primario → secundario → fantasma. El usuario sabe inmediatamente dónde hacer clic.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge"> Bueno</div>
+            <h3 class="case-title">Feedback de Estado con Contexto</h3>
+            <p class="case-desc">El color comunica el estado del sistema, acompañado siempre de un ícono y texto descriptivo.</p>
+            <div class="case-demo">
+              <div class="demo-states">
+                <div class="state-card success"><span class="state-icon"></span><div><strong>Pago Exitoso</strong><small>Tu transacción fue procesada correctamente.</small></div></div>
+                <div class="state-card warning"><span class="state-icon">⚠</span><div><strong>Conexión Inestable</strong><small>Reconectando... los cambios se guardan localmente.</small></div></div>
+                <div class="state-card error"><span class="state-icon">✕</span><div><strong>Error de Validación</strong><small>El correo electrónico ya está registrado.</small></div></div>
+                <div class="state-card info"><span class="state-icon">ℹ</span><div><strong>Actualización Disponible</strong><small>Versión 2.4.1 lista para instalar.</small></div></div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                Color + ícono + texto = máxima accesibilidad. Funciona para personas con daltonismo.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge"> Bueno</div>
+            <h3 class="case-title">Paleta Monocromática Cohesiva</h3>
+            <p class="case-desc">Una sola hue con múltiples valores de luminosidad crea interfaces elegantes sin abrumar.</p>
+            <div class="case-demo">
+              <div class="demo-mono">
+                <div class="mono-sidebar">
+                  <div class="mono-logo">Brnd</div>
+                  <div class="mono-nav-item active">📊 Dashboard</div>
+                  <div class="mono-nav-item">👥 Usuarios</div>
+                  <div class="mono-nav-item">📈 Analytics</div>
+                  <div class="mono-nav-item">⚙️ Config</div>
+                </div>
+                <div class="mono-content">
+                  <div class="mono-card"><span class="mono-num">2,847</span><span class="mono-label">Nuevos Usuarios</span><span class="mono-trend positive">↑ 12%</span></div>
+                  <div class="mono-card"><span class="mono-num">94.2%</span><span class="mono-label">Satisfacción</span><span class="mono-trend positive">↑ 3.1%</span></div>
+                </div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                Misma hue, diferentes luminosidades. Sofisticado, limpio y fácil de mantener.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge"> Bueno</div>
+            <h3 class="case-title">Diseño Accesible para Daltonismo</h3>
+            <p class="case-desc">La información no depende exclusivamente del color. Formas, íconos y etiquetas complementan siempre.</p>
+            <div class="case-demo">
+              <div class="demo-accessible">
+                <div class="access-chart">
+                  <div class="access-bar"><div class="access-fill success-fill" style="width:72%"></div><span class="access-bar-label">Completado <strong>72%</strong></span></div>
+                  <div class="access-bar"><div class="access-fill warning-fill" style="width:18%"></div><span class="access-bar-label">En Progreso <strong>18%</strong></span></div>
+                  <div class="access-bar"><div class="access-fill error-fill" style="width:10%"></div><span class="access-bar-label">Fallidos <strong>10%</strong></span></div>
+                </div>
+                <div class="access-legend">
+                  <div class="legend-item"><span class="legend-icon success-icon"></span><span class="legend-dot" style="background:#22c55e"></span> Completado</div>
+                  <div class="legend-item"><span class="legend-icon warning-icon">◐</span><span class="legend-dot" style="background:#f59e0b"></span> En Progreso</div>
+                  <div class="legend-item"><span class="legend-icon error-icon">✕</span><span class="legend-dot" style="background:#ef4444"></span> Fallidos</div>
+                </div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                Patrón + color + etiqueta + porcentaje. Legible incluso en escala de grises.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge"> Bueno</div>
+            <h3 class="case-title">Modo Oscuro Bien Implementado</h3>
+            <p class="case-desc">Los fondos oscuros usan grises elevados (no negro puro) y los colores se desaturan ligeramente.</p>
+            <div class="case-demo">
+              <div class="demo-darkmode">
+                <div class="dm-card dm-card-1">
+                  <div class="dm-header"><span class="dm-avatar"></span><span class="dm-name">María García</span><span class="dm-online"></span></div>
+                  <p class="dm-message">Hola, ¿ya revisaste el nuevo prototipo? Creo que el flujo de pago quedó mucho mejor.</p>
+                  <div class="dm-footer"><span class="dm-time">hace 5 min</span><span class="dm-check"></span></div>
+                </div>
+                <div class="dm-elevation-guide">
+                  <div class="dm-level" style="background:#121212">z=0 Base</div>
+                  <div class="dm-level" style="background:#1D1D1D">z=1 Cards</div>
+                  <div class="dm-level" style="background:#242424">z=2 Dropdowns</div>
+                  <div class="dm-level" style="background:#2C2C2C">z=3 Modales</div>
+                </div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                Material Design: elevación = opacidad. Fondos más claros = componentes más elevados.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card good-card">
+            <div class="case-badge good-badge"> Bueno</div>
+            <h3 class="case-title">Color de Acento Estratégico</h3>
+            <p class="case-desc">El color de acento se usa con moderación (regla 10%) para dirigir la atención a las acciones clave.</p>
+            <div class="case-demo">
+              <div class="demo-accent">
+                <div class="accent-page">
+                  <div class="accent-hero">
+                    <div class="accent-badge">Nuevo</div>
+                    <h4 class="accent-title">Analítica en tiempo real</h4>
+                    <p class="accent-body">Monitorea tus métricas claves sin retrasos. Configuración en menos de 5 minutos.</p>
+                    <button class="accent-cta">Comenzar Gratis →</button>
+                  </div>
+                  <div class="accent-features">
+                    <div class="feature-item"><div class="feature-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden="true"><path d="M1 4.5L4 7.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Dashboard personalizable</span></div>
+                    <div class="feature-item"><div class="feature-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden="true"><path d="M1 4.5L4 7.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Exportación CSV/PDF</span></div>
+                    <div class="feature-item"><div class="feature-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden="true"><path d="M1 4.5L4 7.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>API REST incluida</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-annotation good-annotation">
+                <span class="annotation-dot"></span>
+                El naranja aparece solo en el CTA y el badge. El 90% restante es neutro.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('contraste')">← Contraste</button>
+        <span class="page-indicator">4 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('malos')">Malos Usos →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: MALOS CASOS =================== -->
+    <div class="page" id="page-malos">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag bad-tag">Malos Casos</div>
+          <h2 class="section-title">Errores que <span class="text-bad">dañan</span> la UX</h2>
+          <p class="section-desc">Patrones comunes que confunden, cansan y excluyen a los usuarios. Aprende a identificarlos y evitarlos.</p>
+        </div>
+        <div class="cases-grid">
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Contraste Insuficiente</h3>
+            <p class="case-desc">Texto gris claro sobre fondo blanco puede verse "elegante" pero es ilegible para millones de usuarios.</p>
+            <div class="case-demo">
+              <div class="demo-bad-contrast">
+                <div class="bad-contrast-box">
+                  <h4 style="color:#cccccc;background:#ffffff;padding:12px;border-radius:8px;margin-bottom:8px;">Título Principal</h4>
+                  <p style="color:#bbbbbb;background:#f5f5f5;padding:12px;border-radius:8px;font-size:14px;margin-bottom:8px;">Este texto se considera moderno y minimalista, pero tiene un ratio de contraste de apenas 1.6:1. WCAG require mínimo 4.5:1.</p>
+                  <button style="background:#e8e8e8;color:#aaaaaa;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-family:inherit;">Continuar</button>
+                  <div class="bad-ratio-label">Ratio: ~1.6:1 FALLA AA y AAA</div>
+                </div>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>El minimalismo no justifica sacrificar la legibilidad. Los usuarios con baja visión simplemente no pueden usar esta interfaz.</div>
+            </div>
+          </div>
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Sobrecarga Cromática</h3>
+            <p class="case-desc">Usar demasiados colores sin sistema crea caos visual. El usuario no sabe qué es importante.</p>
+            <div class="case-demo">
+              <div class="demo-overload">
+                <nav class="overload-nav">
+                  <span style="color:#e11d48">Inicio</span>
+                  <span style="color:#d97706">Productos</span>
+                  <span style="color:#16a34a">Servicios</span>
+                  <span style="color:#2563eb">Blog</span>
+                  <span style="color:#9333ea">Contacto</span>
+                </nav>
+                <div class="overload-content">
+                  <div class="overload-card" style="background:linear-gradient(135deg,#fde68a,#fca5a5)"><strong>Plan Básico</strong><span>$9.99/mes</span></div>
+                  <div class="overload-card" style="background:linear-gradient(135deg,#a7f3d0,#6ee7f7)"><strong>Plan Pro</strong><span>$29.99/mes</span></div>
+                  <div class="overload-card" style="background:linear-gradient(135deg,#c4b5fd,#fbcfe8)"><strong>Enterprise</strong><span>$99.99/mes</span></div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                  <span style="background:#ef4444;color:white;padding:4px 10px;border-radius:20px;font-size:12px;">Nuevo</span>
+                  <span style="background:#f59e0b;color:white;padding:4px 10px;border-radius:20px;font-size:12px;">Popular</span>
+                  <span style="background:#10b981;color:white;padding:4px 10px;border-radius:20px;font-size:12px;">Premium</span>
+                  <span style="background:#6366f1;color:white;padding:4px 10px;border-radius:20px;font-size:12px;">Oferta</span>
+                </div>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>Cada elemento compite por atención. Sin jerarquía de color, el usuario no sabe por dónde empezar.</div>
+            </div>
+          </div>
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Vibración Óptica por Colores Complementarios</h3>
+            <p class="case-desc">Pares de colores opuestos en el círculo cromático, aplicados a máxima saturación, generan una vibración que cansa los ojos e impide enfocar el contenido.</p>
+            <div class="case-demo">
+              <div class="demo-vibration">
+                <div class="vib-row">
+                  <div class="vib-chip" style="background:#0000ff; color:#ff2200;">
+                    <span>Confirmar pedido</span>
+                    <span class="vib-tag">Azul puro · Rojo puro</span>
+                  </div>
+                  <div class="vib-chip" style="background:#ff6600; color:#0033ff;">
+                    <span>Ver detalles →</span>
+                    <span class="vib-tag">Naranja · Azul</span>
+                  </div>
+                  <div class="vib-chip" style="background:#009900; color:#cc00cc;">
+                    <span>Agregar al carrito</span>
+                    <span class="vib-tag">Verde · Violeta</span>
+                  </div>
+                </div>
+                <p class="vib-caption">¿Sientes que las letras parpadean o vibran? Los ojos no pueden enfocar dos colores complementarios puros al mismo tiempo — producen halación visual.</p>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>La solución: desaturar o aclarar uno de los dos colores. Nunca oponer complementarios puros en texto sobre fondo.</div>
+            </div>
+          </div>
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Contra-intuición Semántica</h3>
+            <p class="case-desc">Usar rojo para acciones positivas o verde para errores rompe las expectativas del usuario.</p>
+            <div class="case-demo">
+              <div class="demo-semantic">
+                <div style="background:#dcfce7;border-left:4px solid #22c55e;color:#15803d;padding:12px;border-radius:6px;margin-bottom:10px;">
+                  <strong style="display:block;"> Proceso en Verde</strong>
+                  <small>Tu cuenta fue eliminada permanentemente. Esta acción es irreversible.</small>
+                </div>
+                <div style="background:#fef2f2;border-left:4px solid #ef4444;color:#dc2626;padding:12px;border-radius:6px;margin-bottom:10px;">
+                  <strong style="display:block;">⚠ Proceso en Rojo</strong>
+                  <small>Tu pago fue procesado exitosamente. ¡Gracias por tu compra!</small>
+                </div>
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                  <button style="background:#ef4444;color:white;border:none;padding:10px 16px;border-radius:6px;font-family:inherit;font-size:13px;cursor:pointer;flex:1"> Confirmar</button>
+                  <button style="background:#22c55e;color:white;border:none;padding:10px 16px;border-radius:6px;font-family:inherit;font-size:13px;cursor:pointer;flex:1">✕ Cancelar</button>
+                </div>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>El usuario instintivamente asociará el rojo con peligro y el verde con seguridad. Invertirlos genera error cognitivo.</div>
+            </div>
+          </div>
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Texto sin Contraste sobre Imagen</h3>
+            <p class="case-desc">Texto directo sobre fotografías varía drásticamente en contraste según las zonas de la imagen.</p>
+            <div class="case-demo">
+              <div class="demo-text-over-image">
+                <div class="toi-bad">
+                  <div class="toi-overlay-bad"><h4>Explora el Mundo</h4><p>Descubre destinos únicos</p><button class="toi-btn">Reservar</button></div>
+                </div>
+                <div class="toi-good">
+                  <div class="toi-overlay-good"><h4>Explora el Mundo</h4><p>Descubre destinos únicos</p><button class="toi-btn">Reservar</button></div>
+                </div>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>Izquierda: sin overlay, ilegible en zonas claras. Derecha: gradiente semitransparente garantiza legibilidad siempre.</div>
+            </div>
+          </div>
+
+          <div class="case-card bad-card">
+            <div class="case-badge bad-badge"> Malo</div>
+            <h3 class="case-title">Saturación Excesiva en Fondos</h3>
+            <p class="case-desc">Fondos completamente saturados (#ff0000, #0000ff) generan fatiga visual rápida.</p>
+            <div class="case-demo">
+              <div class="demo-saturation">
+                <div class="sat-bad"><div class="sat-content"><h4>Bienvenido</h4><p>Azul puro como fondo completo.</p><span class="sat-note">Ratio: 1.4:1 ✗</span></div></div>
+                <div class="sat-good"><div class="sat-content"><h4>Bienvenido</h4><p>Misma hue, oscurecida y desaturada.</p><span class="sat-note">Ratio: 8.2:1 </span></div></div>
+              </div>
+              <div class="demo-annotation bad-annotation"><span class="annotation-dot bad-dot"></span>El azul puro (#0000FF) tiene ratio 2.4:1. Oscurecer y desaturar el fondo resuelve el problema sin perder identidad de marca.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('buenos')">← Buenos Usos</button>
+        <span class="page-indicator">5 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('ecommerce')">E-Commerce →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: E-COMMERCE =================== -->
+    <div class="page" id="page-ecommerce">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag ecom-tag">🛍️ Caso de Estudio</div>
+          <h2 class="section-title">E-Commerce en la Práctica</h2>
+          <p class="section-desc">Mismo producto, dos enfoques de color radicalmente distintos. Observa cómo el color afecta la confianza, la jerarquía y la conversión.</p>
+        </div>
+        <div class="ecom-comparison">
+          <!-- TIENDA MALA -->
+          <div class="ecom-store bad-store">
+            <div class="ecom-store-label bad-store-label">Tienda con Malas Prácticas</div>
+            <div class="ecom-critique-list">
+              <span class="critique-item">⚡ Sobrecarga cromática</span>
+              <span class="critique-item">⚡ Contraste insuficiente</span>
+              <span class="critique-item">⚡ Sin jerarquía visual</span>
+              <span class="critique-item">⚡ Colores anti-semánticos</span>
+            </div>
+            <div class="ec-header ec-header-bad">
+              <div class="ec-logo" style="color:#FF0080;font-weight:900;">🛒 MEGASHOP</div>
+              <nav class="ec-nav ec-nav-bad">
+                <span style="color:#FF6600">Inicio</span>
+                <span style="color:#00CC00">Catálogo</span>
+                <span style="color:#0066FF">Ofertas</span>
+                <span style="color:#CC00CC">Mi Cuenta</span>
+              </nav>
+              <div class="ec-cart-bad">🛒 <span style="background:#FF0000;color:#FFFF00;padding:2px 6px;border-radius:3px;font-weight:900;font-size:11px;">3</span></div>
+            </div>
+            <div class="ec-banner ec-banner-bad">
+              <div style="color:#FF0000;font-size:1.1rem;font-weight:900;">¡¡SÚPER OFERTA IMPERDIBLE!!</div>
+              <div style="color:#FFFF00;font-size:0.8rem;margin-top:4px;">Hasta 70% OFF en TODO el catálogo hoy</div>
+              <button class="ec-btn-bad-promo">¡APROVECHA AHORA!</button>
+            </div>
+            <div class="ec-breadcrumb-bad"><span style="color:#0000FF">Inicio</span> > <span style="color:#FF6600">Electrónica</span> > <span style="color:#CC0000">Auriculares</span></div>
+            <div class="ec-product-area">
+              <div class="ec-images-bad">
+                <div class="ec-main-img-bad">
+                  <div class="ec-img-placeholder-bad">🎧</div>
+                  <div class="ec-badge-stack">
+                    <span class="ec-badge-bad" style="background:#FF0000;color:#FFFF00;">NUEVO</span>
+                    <span class="ec-badge-bad" style="background:#00CC00;color:#FF00FF;">-40%</span>
+                    <span class="ec-badge-bad" style="background:#0000FF;color:#FF8800;">TOP</span>
+                  </div>
+                </div>
+                <div class="ec-thumbs-bad">
+                  <div class="ec-thumb-bad" style="border-color:#FF0000"></div>
+                  <div class="ec-thumb-bad" style="border-color:#00CC00"></div>
+                  <div class="ec-thumb-bad" style="border-color:#0000FF"></div>
+                </div>
+              </div>
+              <div class="ec-info-bad">
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+                  <span style="background:#FF6600;color:white;font-size:10px;font-weight:900;padding:3px 8px;border-radius:3px;">ELECTRÓNICA</span>
+                  <span style="background:#9900FF;color:#FFFF00;font-size:10px;font-weight:900;padding:3px 8px;border-radius:3px;">AUDIO</span>
+                </div>
+                <h2 class="ec-product-title-bad">Auriculares Pro X 2000 Bluetooth Inalámbrico</h2>
+                <div class="ec-rating-bad"><span style="color:#FF6600">★★★★</span><span style="color:#CCCCCC">★</span><span style="color:#0000FF;font-size:11px;">(247 reseñas)</span></div>
+                <div class="ec-price-bad">
+                  <span class="ec-price-new-bad">$899</span>
+                  <span class="ec-price-old-bad">$1,499</span>
+                  <span style="background:#FF0000;color:#FFFF00;font-size:11px;font-weight:900;padding:3px 8px;border-radius:4px;">-40%</span>
+                </div>
+                <div class="ec-stock-bad" style="color:#00CC00;font-weight:900;border:2px solid #CC0000;padding:6px;border-radius:4px;background:#FFFFCC;">⚠ Solo quedan 3 en stock — ¡Cómpralo ya!</div>
+                <div class="ec-colors-bad">
+                  <div style="color:#FF0000;font-size:11px;font-weight:700;">COLOR:</div>
+                  <div style="display:flex;gap:6px;margin-top:4px;">
+                    <div style="width:22px;height:22px;background:#FF0000;border-radius:50%;border:3px solid #0000FF"></div>
+                    <div style="width:22px;height:22px;background:#0000FF;border-radius:50%;border:3px solid #FF0000"></div>
+                    <div style="width:22px;height:22px;background:#00CC00;border-radius:50%;border:3px solid #FF6600"></div>
+                  </div>
+                </div>
+                <div class="ec-actions-bad">
+                  <button class="ec-add-bad">🛒 AÑADIR AL CARRITO</button>
+                  <button class="ec-buy-bad">⚡ COMPRAR AHORA</button>
+                  <button class="ec-wish-bad">❤ FAVORITOS</button>
+                </div>
+                <div class="ec-shipping-bad">
+                  <div style="color:#00CC00;font-size:11px;font-weight:700;"> ENVÍO GRATIS</div>
+                  <div style="color:#FF6600;font-size:11px;font-weight:700;">⚡ ENTREGA EXPRESS</div>
+                  <div style="color:#0000FF;font-size:11px;font-weight:700;">🔄 30 DÍAS DEVOLUCIÓN</div>
+                </div>
+              </div>
+            </div>
+            <div class="ec-annotations">
+              <div class="ec-annotation-item bad-ec-note"><strong>Jerarquía rota:</strong> Los 3 CTAs tienen el mismo peso visual. El usuario no sabe cuál presionar.</div>
+              <div class="ec-annotation-item bad-ec-note"><strong>7+ colores saturados:</strong> Cada elemento grita por atención. El resultado es parálisis visual.</div>
+              <div class="ec-annotation-item bad-ec-note"><strong>Semántica invertida:</strong> El stock usa verde (color de "todo bien") con borde rojo. Contradictorio.</div>
+              <div class="ec-annotation-item bad-ec-note"><strong>Nav multicolor:</strong> Cada link en un color diferente elimina la cohesión de marca.</div>
+            </div>
+          </div>
+
+          <!-- TIENDA BUENA -->
+          <div class="ecom-store good-store">
+            <div class="ecom-store-label good-store-label"> Tienda con Buenas Prácticas</div>
+            <div class="ecom-praise-list">
+              <span class="praise-item"> Paleta monocromática + acento único</span>
+              <span class="praise-item"> Jerarquía clara de CTAs</span>
+              <span class="praise-item"> Semántica de color correcta</span>
+              <span class="praise-item"> Contraste ≥ 4.5:1 en todo el texto</span>
+            </div>
+            <div class="ec-header ec-header-good">
+              <div class="ec-logo" style="color:#0f172a;font-weight:800;font-family:'Space Grotesk',sans-serif;">🎧 SoundStore</div>
+              <nav class="ec-nav ec-nav-good">
+                <span>Inicio</span><span>Catálogo</span><span class="ec-nav-active">Auriculares</span><span>Mi Cuenta</span>
+              </nav>
+              <div class="ec-cart-good">🛒 <span class="ec-cart-badge-good">3</span></div>
+            </div>
+            <div class="ec-breadcrumb-good">
+              <span class="ec-bc-link">Inicio</span><span class="ec-bc-sep">›</span>
+              <span class="ec-bc-link">Electrónica</span><span class="ec-bc-sep">›</span>
+              <span class="ec-bc-current">Auriculares Pro X</span>
+            </div>
+            <div class="ec-product-area">
+              <div class="ec-images-good">
+                <div class="ec-main-img-good">
+                  <div class="ec-img-placeholder-good">🎧</div>
+                  <span class="ec-badge-good">-40%</span>
+                </div>
+                <div class="ec-thumbs-good">
+                  <div class="ec-thumb-good active-thumb"></div>
+                  <div class="ec-thumb-good"></div>
+                  <div class="ec-thumb-good"></div>
+                </div>
+              </div>
+              <div class="ec-info-good">
+                <div class="ec-category-tag">Electrónica · Auriculares</div>
+                <h2 class="ec-product-title-good">Auriculares Pro X 2000 Bluetooth</h2>
+                <div class="ec-rating-good"><span class="ec-stars">★★★★</span><span class="ec-star-empty">★</span><span class="ec-review-count">247 reseñas</span></div>
+                <div class="ec-price-good">
+                  <span class="ec-price-new-good">$899</span>
+                  <span class="ec-price-old-good">$1,499</span>
+                  <span class="ec-price-save">Ahorras $600</span>
+                </div>
+                <div class="ec-stock-good"><span class="ec-stock-icon">⚠</span><span class="ec-stock-text">Solo <strong>3 unidades</strong> disponibles</span></div>
+                <div class="ec-colors-good">
+                  <div class="ec-colors-label">Color: <strong>Negro</strong></div>
+                  <div class="ec-color-options">
+                    <div class="ec-color-option selected-color" style="background:#1a1a1a" title="Negro"></div>
+                    <div class="ec-color-option" style="background:#1d4ed8" title="Azul Marino"></div>
+                    <div class="ec-color-option" style="background:#f1f5f9;border:1px solid #cbd5e1" title="Blanco"></div>
+                  </div>
+                </div>
+                <div class="ec-actions-good">
+                  <button class="ec-add-good">Añadir al Carrito</button>
+                  <button class="ec-buy-good">Comprar Ahora</button>
+                </div>
+                <button class="ec-wish-good">♡ Guardar en favoritos</button>
+                <div class="ec-shipping-good">
+                  <div class="ec-ship-item"><span class="ec-ship-icon success-ship"></span><span>Envío gratis en pedidos +$500</span></div>
+                  <div class="ec-ship-item"><span class="ec-ship-icon info-ship">↩</span><span>Devolución gratuita en 30 días</span></div>
+                  <div class="ec-ship-item"><span class="ec-ship-icon success-ship">⚡</span><span>Entrega en 24–48 horas hábiles</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="ec-annotations">
+              <div class="ec-annotation-item good-ec-note"><strong>Jerarquía de CTAs:</strong> "Añadir al carrito" (secundario) vs "Comprar Ahora" (primario oscuro). Orden claro.</div>
+              <div class="ec-annotation-item good-ec-note"><strong>Un solo acento:</strong> Solo el precio de descuento y el badge usan acento. Todo lo demás es neutro.</div>
+              <div class="ec-annotation-item good-ec-note"><strong>Advertencia de stock:</strong> Usa ámbar con ícono ⚠ — semánticamente correcto (advertencia, no error).</div>
+              <div class="ec-annotation-item good-ec-note"><strong>Nav uniforme:</strong> Todos los links en el mismo color neutro. Solo el activo con subrayado.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('malos')">← Malos Usos</button>
+        <span class="page-indicator">6 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('comparador')">Comparador →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: COMPARADOR =================== -->
+    <div class="page" id="page-comparador">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag">Interactivo</div>
+          <h2 class="section-title">Comparador de Paletas</h2>
+          <p class="section-desc">Selecciona un escenario y compara lado a lado el diseño correcto contra el incorrecto.</p>
+        </div>
+        <div class="comparator">
+          <div class="scenario-tabs">
+            <button class="scenario-tab active" onclick="setScenario('ecommerce')" id="tab-ecommerce">🛍️ E-commerce</button>
+            <button class="scenario-tab" onclick="setScenario('dashboard')" id="tab-dashboard">📊 Dashboard</button>
+            <button class="scenario-tab" onclick="setScenario('login')" id="tab-login">🔐 Login</button>
+            <button class="scenario-tab" onclick="setScenario('alerts')" id="tab-alerts">🚨 Alertas</button>
+          </div>
+          <div class="compare-panels">
+            <div class="compare-panel panel-bad">
+              <div class="panel-label bad-label">Diseño Incorrecto</div>
+              <div class="panel-content" id="panel-bad"></div>
+            </div>
+            <div class="compare-divider">vs</div>
+            <div class="compare-panel panel-good">
+              <div class="panel-label good-label"> Diseño Correcto</div>
+              <div class="panel-content" id="panel-good"></div>
+            </div>
+          </div>
+          <div class="scenario-explanation" id="scenario-explanation"></div>
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('ecommerce')">← E-Commerce</button>
+        <span class="page-indicator">7 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('marca')">Identidad →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: MARCA =================== -->
+    <div class="page" id="page-marca">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag">Identidad</div>
+          <h2 class="section-title">Color e Identidad de Marca</h2>
+          <p class="section-desc">El color es el elemento más inmediato de reconocimiento de marca. Transmite valores, emociones y posicionamiento antes de que el usuario lea una sola palabra.</p>
+        </div>
+
+        <!-- Intro stat strip -->
+        <div class="marca-stats">
+          <div class="marca-stat-item">
+            <span class="marca-stat-num">90%</span>
+            <span class="marca-stat-label">de las decisiones de compra influenciadas por el color</span>
+          </div>
+          <div class="marca-stat-divider"></div>
+          <div class="marca-stat-item">
+            <span class="marca-stat-num">80%</span>
+            <span class="marca-stat-label">de aumento en reconocimiento de marca con color consistente</span>
+          </div>
+          <div class="marca-stat-divider"></div>
+          <div class="marca-stat-item">
+            <span class="marca-stat-num">0.05s</span>
+            <span class="marca-stat-label">tarda el usuario en formarse una primera impresión visual</span>
+          </div>
+        </div>
+
+        <!-- Brand color family cards -->
+        <div class="brand-families">
+
+          <div class="brand-family-card" style="--family-color:#e53e3e; --family-glow:rgba(229,62,62,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:#e53e3e;"></div>
+              <div>
+                <div class="brand-family-name">Rojo</div>
+                <div class="brand-family-feel">Pasión · Urgencia · Energía</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">Activa la atención y estimula la acción inmediata. Ideal para marcas de entretenimiento, alimentación y ofertas de tiempo limitado. Genera apetito y aumenta el ritmo cardíaco.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(229,62,62,0.15);color:#fc8181;border-color:rgba(229,62,62,0.3);">Coca-Cola</span>
+              <span class="brand-chip" style="background:rgba(229,62,62,0.15);color:#fc8181;border-color:rgba(229,62,62,0.3);">Netflix</span>
+              <span class="brand-chip" style="background:rgba(229,62,62,0.15);color:#fc8181;border-color:rgba(229,62,62,0.3);">YouTube</span>
+              <span class="brand-chip" style="background:rgba(229,62,62,0.15);color:#fc8181;border-color:rgba(229,62,62,0.3);">Nintendo</span>
+            </div>
+            <div class="brand-family-tip">Usa con precaución: en exceso genera agresividad. Combínalo con blanco o negro para equilibrar.</div>
+          </div>
+
+          <div class="brand-family-card" style="--family-color:#3182ce; --family-glow:rgba(49,130,206,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:#3182ce;"></div>
+              <div>
+                <div class="brand-family-name">Azul</div>
+                <div class="brand-family-feel">Confianza · Tecnología · Estabilidad</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">El color más universal en branding corporativo y tecnológico. Comunica fiabilidad y profesionalismo. Dominante en finanzas, salud y plataformas de redes sociales.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(49,130,206,0.15);color:#63b3ed;border-color:rgba(49,130,206,0.3);">Meta</span>
+              <span class="brand-chip" style="background:rgba(49,130,206,0.15);color:#63b3ed;border-color:rgba(49,130,206,0.3);">Samsung</span>
+              <span class="brand-chip" style="background:rgba(49,130,206,0.15);color:#63b3ed;border-color:rgba(49,130,206,0.3);">PayPal</span>
+              <span class="brand-chip" style="background:rgba(49,130,206,0.15);color:#63b3ed;border-color:rgba(49,130,206,0.3);">LinkedIn</span>
+            </div>
+            <div class="brand-family-tip">El azul oscuro (#003087) proyecta autoridad; el azul claro (#4fc3f7) proyecta modernidad e innovación.</div>
+          </div>
+
+          <div class="brand-family-card" style="--family-color:#38a169; --family-glow:rgba(56,161,105,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:#38a169;"></div>
+              <div>
+                <div class="brand-family-name">Verde</div>
+                <div class="brand-family-feel">Naturaleza · Salud · Crecimiento</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">Evoca sostenibilidad, bienestar y vitalidad. Funciona especialmente bien en marcas de alimentación saludable, finanzas (crecimiento) y tecnología verde.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(56,161,105,0.15);color:#68d391;border-color:rgba(56,161,105,0.3);">Spotify</span>
+              <span class="brand-chip" style="background:rgba(56,161,105,0.15);color:#68d391;border-color:rgba(56,161,105,0.3);">WhatsApp</span>
+              <span class="brand-chip" style="background:rgba(56,161,105,0.15);color:#68d391;border-color:rgba(56,161,105,0.3);">Starbucks</span>
+              <span class="brand-chip" style="background:rgba(56,161,105,0.15);color:#68d391;border-color:rgba(56,161,105,0.3);">John Deere</span>
+            </div>
+            <div class="brand-family-tip">El verde saturado (#00c853) comunica energía; los tonos apagados como el verde oliva transmiten premium y sostenibilidad.</div>
+          </div>
+
+          <div class="brand-family-card" style="--family-color:#d69e2e; --family-glow:rgba(214,158,46,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:#f6ad55;"></div>
+              <div>
+                <div class="brand-family-name">Amarillo y Naranja</div>
+                <div class="brand-family-feel">Optimismo · Accesibilidad · Calidez</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">El amarillo captura la atención y comunica felicidad y accesibilidad. El naranja combina la energía del rojo con la alegría del amarillo, ideal para llamadas a la acción.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(214,158,46,0.15);color:#f6ad55;border-color:rgba(214,158,46,0.3);">McDonald's</span>
+              <span class="brand-chip" style="background:rgba(214,158,46,0.15);color:#f6ad55;border-color:rgba(214,158,46,0.3);">Amazon</span>
+              <span class="brand-chip" style="background:rgba(214,158,46,0.15);color:#f6ad55;border-color:rgba(214,158,46,0.3);">Fanta</span>
+              <span class="brand-chip" style="background:rgba(214,158,46,0.15);color:#f6ad55;border-color:rgba(214,158,46,0.3);">Snapchat</span>
+            </div>
+            <div class="brand-family-tip">Evita texto amarillo sobre fondo blanco: el ratio de contraste es menor a 2:1. Úsalo siempre como acento sobre fondos oscuros.</div>
+          </div>
+
+          <div class="brand-family-card" style="--family-color:#805ad5; --family-glow:rgba(128,90,213,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:#805ad5;"></div>
+              <div>
+                <div class="brand-family-name">Morado</div>
+                <div class="brand-family-feel">Lujo · Creatividad · Sabiduría</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">Históricamente asociado a la realeza, hoy comunica premium, creatividad y distinción. Popular en cosméticos, industria del lujo y marcas de entretenimiento creativo.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(128,90,213,0.15);color:#b794f4;border-color:rgba(128,90,213,0.3);">Cadbury</span>
+              <span class="brand-chip" style="background:rgba(128,90,213,0.15);color:#b794f4;border-color:rgba(128,90,213,0.3);">Hallmark</span>
+              <span class="brand-chip" style="background:rgba(128,90,213,0.15);color:#b794f4;border-color:rgba(128,90,213,0.3);">Twitch</span>
+              <span class="brand-chip" style="background:rgba(128,90,213,0.15);color:#b794f4;border-color:rgba(128,90,213,0.3);">Milka</span>
+            </div>
+            <div class="brand-family-tip">Los tonos más oscuros (#4a1580) apuntan al lujo exclusivo; los más claros (#c084fc) comunican creatividad y modernidad.</div>
+          </div>
+
+          <div class="brand-family-card" style="--family-color:#718096; --family-glow:rgba(113,128,150,0.18);">
+            <div class="brand-family-header">
+              <div class="brand-family-swatch" style="background:linear-gradient(135deg,#1a1a1a,#555);"></div>
+              <div>
+                <div class="brand-family-name">Negro y Neutros</div>
+                <div class="brand-family-feel">Sofisticación · Elegancia · Autoridad</div>
+              </div>
+            </div>
+            <p class="brand-family-desc">El negro comunica exclusividad y poder atemporal. Permite que el producto sea el protagonista. Dominante en moda de lujo, tecnología premium y marcas aspiracionales.</p>
+            <div class="brand-family-examples">
+              <span class="brand-chip" style="background:rgba(255,255,255,0.06);color:#cbd5e0;border-color:rgba(255,255,255,0.15);">Apple</span>
+              <span class="brand-chip" style="background:rgba(255,255,255,0.06);color:#cbd5e0;border-color:rgba(255,255,255,0.15);">Nike</span>
+              <span class="brand-chip" style="background:rgba(255,255,255,0.06);color:#cbd5e0;border-color:rgba(255,255,255,0.15);">Chanel</span>
+              <span class="brand-chip" style="background:rgba(255,255,255,0.06);color:#cbd5e0;border-color:rgba(255,255,255,0.15);">Prada</span>
+            </div>
+            <div class="brand-family-tip">En diseño de interfaces, no uses negro puro (#000000). Usa #0f172a o #1a1a2e: son más agradables para lectura prolongada.</div>
+          </div>
+
+        </div>
+
+        <!-- Brand identity case studies -->
+        <div class="brand-cases-header">
+          <h3 class="brand-cases-title">Casos Reales de Identidad Visual</h3>
+          <p class="brand-cases-desc">Cómo las marcas más reconocidas aplican el color en sus interfaces para reforzar su identidad.</p>
+        </div>
+        <div class="brand-cases">
+
+          <!-- Spotify -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">Spotify</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#1DB954;" title="#1DB954">
+                  <span class="brand-hex-label">#1DB954</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#191414;" title="#191414">
+                  <span class="brand-hex-label">#191414</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);" title="#FFFFFF">
+                  <span class="brand-hex-label" style="color:#191414;">#FFFFFF</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">El verde vibrante (#1DB954) sobre negro casi puro crea una identidad que mezcla <strong>energía y sofisticación</strong>. El verde funciona como único acento: botones, barras de progreso y elementos activos. Nunca compite con el contenido musical.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#121212;border-radius:12px;padding:14px;font-family:'Inter',sans-serif;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                  <span style="color:#fff;font-weight:800;font-size:0.95rem;letter-spacing:-0.3px;">spotify</span>
+                  <span style="color:#1DB954;font-size:0.7rem;font-weight:600;">Premium</span>
+                </div>
+                <div style="background:#282828;border-radius:8px;padding:10px;margin-bottom:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:40px;height:40px;background:linear-gradient(135deg,#1DB954,#158a3e);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">♪</div>
+                    <div style="flex:1;min-width:0;">
+                      <div style="color:#fff;font-size:0.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Blinding Lights</div>
+                      <div style="color:#b3b3b3;font-size:0.7rem;">The Weeknd</div>
+                    </div>
+                    <div style="color:#1DB954;font-size:1rem;">♥</div>
+                  </div>
+                </div>
+                <div style="margin-bottom:8px;">
+                  <div style="height:3px;background:#535353;border-radius:2px;overflow:hidden;margin-bottom:5px;">
+                    <div style="height:100%;width:42%;background:#1DB954;border-radius:2px;"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;">
+                    <span style="color:#b3b3b3;font-size:0.65rem;">1:27</span>
+                    <span style="color:#b3b3b3;font-size:0.65rem;">3:20</span>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:18px;">
+                  <span style="color:#b3b3b3;font-size:0.9rem;cursor:default;">⏮</span>
+                  <div style="width:34px;height:34px;background:#1DB954;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:#000;font-weight:900;">▶</div>
+                  <span style="color:#b3b3b3;font-size:0.9rem;cursor:default;">⏭</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Netflix -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">Netflix</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#E50914;" title="#E50914">
+                  <span class="brand-hex-label">#E50914</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#141414;" title="#141414">
+                  <span class="brand-hex-label">#141414</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);" title="#FFFFFF">
+                  <span class="brand-hex-label" style="color:#141414;">#FFFFFF</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">El rojo intenso (#E50914) sobre fondo completamente oscuro evoca <strong>drama, cine y emoción</strong>. La paleta de dos colores funciona porque el contenido (carátulas de series) aporta toda la variedad cromática. La marca se retira para dar protagonismo al catálogo.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#141414;border-radius:12px;padding:14px;font-family:'Inter',sans-serif;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <span style="color:#E50914;font-weight:900;font-size:1rem;letter-spacing:1px;font-family:'Space Grotesk',sans-serif;">NETFLIX</span>
+                  <div style="width:28px;height:28px;background:#E50914;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;color:#fff;">D</div>
+                </div>
+                <div style="color:#e5e5e5;font-size:0.75rem;font-weight:600;margin-bottom:8px;">Seguir viendo</div>
+                <div style="display:flex;gap:7px;margin-bottom:10px;">
+                  <div style="flex:1;background:linear-gradient(160deg,#2c1810,#1a0d0d);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:5px;">
+                    <div style="font-size:0.55rem;color:#fff;font-weight:700;line-height:1.1;">Serie<br>Oscura</div>
+                  </div>
+                  <div style="flex:1;background:linear-gradient(160deg,#0d1a2c,#071020);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:5px;">
+                    <div style="font-size:0.55rem;color:#fff;font-weight:700;line-height:1.1;">Acción<br>2024</div>
+                  </div>
+                  <div style="flex:1;background:linear-gradient(160deg,#1a2c0d,#0a1a05);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:5px;">
+                    <div style="font-size:0.55rem;color:#fff;font-weight:700;line-height:1.1;">Drama<br>★ 4.8</div>
+                  </div>
+                </div>
+                <button style="width:100%;padding:8px;background:#E50914;color:#fff;border:none;border-radius:5px;font-size:0.75rem;font-weight:700;font-family:inherit;cursor:default;">▶ Reproducir</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">WhatsApp</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#25D366;" title="#25D366">
+                  <span class="brand-hex-label">#25D366</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#075E54;" title="#075E54">
+                  <span class="brand-hex-label">#075E54</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#DCF8C6;" title="#DCF8C6">
+                  <span class="brand-hex-label" style="color:#075E54;">#DCF8C6</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">Usa <strong>tres tonos del mismo verde</strong> para toda su jerarquía: el verde oscuro (#075E54) en la barra de navegación proyecta seguridad; el verde brillante (#25D366) en botones de acción; el verde menta (#DCF8C6) para los globos propios crea un código visual propio e instantáneamente reconocible.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#111b21;border-radius:12px;overflow:hidden;font-family:'Inter',sans-serif;">
+                <div style="background:#075E54;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
+                  <span style="color:#fff;font-weight:700;font-size:0.85rem;">WhatsApp</span>
+                  <span style="color:rgba(255,255,255,0.7);font-size:0.8rem;">✎ ⋮</span>
+                </div>
+                <div style="padding:10px;display:flex;flex-direction:column;gap:8px;">
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="width:32px;height:32px;background:#25D366;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;">A</div>
+                    <div style="flex:1;">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+                        <span style="color:#e9edef;font-size:0.78rem;font-weight:600;">Ana García</span>
+                        <span style="color:#8696a0;font-size:0.65rem;">10:42</span>
+                      </div>
+                      <div style="color:#8696a0;font-size:0.72rem;">Perfecto, nos vemos ahí ✓✓</div>
+                    </div>
+                    <div style="background:#25D366;color:#fff;font-size:0.6rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="width:32px;height:32px;background:#128C7E;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;">L</div>
+                    <div style="flex:1;">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+                        <span style="color:#e9edef;font-size:0.78rem;font-weight:600;">Luis Mora</span>
+                        <span style="color:#8696a0;font-size:0.65rem;">9:15</span>
+                      </div>
+                      <div style="color:#8696a0;font-size:0.72rem;">📷 Foto</div>
+                    </div>
+                  </div>
+                  <div style="background:#DCF8C6;border-radius:8px 8px 0 8px;padding:7px 10px;align-self:flex-end;max-width:70%;">
+                    <div style="color:#111b21;font-size:0.72rem;">¡Genial! Ya voy para allá</div>
+                    <div style="color:#128C7E;font-size:0.6rem;text-align:right;margin-top:3px;">10:44 ✓✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Airbnb -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">Airbnb</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#FF5A5F;" title="#FF5A5F">
+                  <span class="brand-hex-label">#FF5A5F</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#00A699;" title="#00A699">
+                  <span class="brand-hex-label">#00A699</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#484848;" title="#484848">
+                  <span class="brand-hex-label">#484848</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">El coral (#FF5A5F) refleja <strong>calidez y acogida</strong>, el teal (#00A699) aporta frescura y confianza. Juntos forman una combinación complementaria atípica en hospitalidad —sector dominado por azules— que da a Airbnb una personalidad visual única e inconfundible.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#fff;border-radius:12px;padding:14px;font-family:'Inter',sans-serif;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <span style="color:#FF5A5F;font-weight:800;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;">airbnb</span>
+                  <button style="background:#FF5A5F;color:#fff;border:none;padding:5px 12px;border-radius:20px;font-size:0.7rem;font-weight:600;font-family:inherit;cursor:default;">Iniciar sesión</button>
+                </div>
+                <div style="background:#f7f7f7;border-radius:10px;overflow:hidden;margin-bottom:10px;">
+                  <div style="background:linear-gradient(160deg,#ffd3c8,#ffeacc);height:72px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🏠</div>
+                  <div style="padding:8px 10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                      <span style="color:#484848;font-size:0.8rem;font-weight:600;">Casa en Cartagena</span>
+                      <span style="color:#484848;font-size:0.75rem;font-weight:700;">$85<span style="font-weight:400;font-size:0.65rem;"> noche</span></span>
+                    </div>
+                    <div style="color:#717171;font-size:0.68rem;margin-top:2px;">4 huéspedes · 2 hab · 1 baño</div>
+                    <div style="display:flex;align-items:center;gap:4px;margin-top:4px;">
+                      <span style="color:#FF5A5F;font-size:0.7rem;">★</span>
+                      <span style="color:#484848;font-size:0.7rem;font-weight:600;">4.92</span>
+                      <span style="color:#717171;font-size:0.7rem;">(38 reseñas)</span>
+                    </div>
+                  </div>
+                </div>
+                <button style="width:100%;padding:9px;background:#FF5A5F;color:#fff;border:none;border-radius:8px;font-size:0.78rem;font-weight:700;font-family:inherit;cursor:default;">Reservar ahora</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duolingo -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">Duolingo</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#58CC02;" title="#58CC02">
+                  <span class="brand-hex-label">#58CC02</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#1CB0F6;" title="#1CB0F6">
+                  <span class="brand-hex-label">#1CB0F6</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#FF4B4B;" title="#FF4B4B">
+                  <span class="brand-hex-label">#FF4B4B</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">Uno de los pocos casos donde <strong>múltiples colores saturados coexisten con éxito</strong>. Funciona porque cada color tiene un rol semántico fijo: verde = progreso/éxito, azul = información/lección activa, rojo = error/vidas perdidas. El sistema de color es en sí mismo el lenguaje de feedback de la app.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#fff;border-radius:12px;padding:14px;font-family:'Inter',sans-serif;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <div style="display:flex;align-items:center;gap:7px;">
+                    <div style="background:#58CC02;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">🦜</div>
+                    <span style="color:#4B4B4B;font-weight:800;font-size:0.85rem;font-family:'Space Grotesk',sans-serif;">duolingo</span>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <span style="color:#FF4B4B;font-size:0.75rem;font-weight:700;">❤ 4</span>
+                    <span style="color:#1CB0F6;font-size:0.75rem;font-weight:700;">⚡ 47</span>
+                  </div>
+                </div>
+                <div style="background:#f7f7f7;border-radius:8px;padding:10px;margin-bottom:10px;">
+                  <div style="color:#4B4B4B;font-size:0.78rem;font-weight:600;margin-bottom:8px;">¿Cómo se dice "hello"?</div>
+                  <div style="display:flex;flex-direction:column;gap:5px;">
+                    <button style="background:#fff;border:2px solid #e5e5e5;padding:7px 10px;border-radius:8px;color:#4B4B4B;font-size:0.72rem;font-weight:600;text-align:left;font-family:inherit;cursor:default;">Hola</button>
+                    <button style="background:#d7ffb8;border:2px solid #58CC02;padding:7px 10px;border-radius:8px;color:#2a7a00;font-size:0.72rem;font-weight:600;text-align:left;font-family:inherit;cursor:default;">✓ Hola</button>
+                    <button style="background:#fff;border:2px solid #e5e5e5;padding:7px 10px;border-radius:8px;color:#4B4B4B;font-size:0.72rem;font-weight:600;text-align:left;font-family:inherit;cursor:default;">Adiós</button>
+                  </div>
+                </div>
+                <div style="background:#58CC02;border-radius:8px;padding:8px;text-align:center;color:#fff;font-size:0.75rem;font-weight:700;">¡Correcto! +10 XP</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slack -->
+          <div class="brand-case-card">
+            <div class="brand-case-left">
+              <div class="brand-case-name">Slack</div>
+              <div class="brand-case-palette">
+                <div class="brand-hex-swatch" style="background:#4A154B;" title="#4A154B">
+                  <span class="brand-hex-label">#4A154B</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#ECB22E;" title="#ECB22E">
+                  <span class="brand-hex-label" style="color:#1a1a1a;">#ECB22E</span>
+                </div>
+                <div class="brand-hex-swatch" style="background:#2EB67D;" title="#2EB67D">
+                  <span class="brand-hex-label">#2EB67D</span>
+                </div>
+              </div>
+              <p class="brand-case-insight">Slack usa una identidad <strong>multi-color intencionada</strong>: el morado oscuro como color dominante del workspace transmite profesionalismo; el amarillo, verde y rojo de su logo representan los cuatro colores de su marca paraguas, pero dentro de la app cada espacio de trabajo puede tener <strong>su propio color de identidad</strong>.</p>
+            </div>
+            <div class="brand-case-mockup">
+              <div style="background:#1a1d21;border-radius:12px;overflow:hidden;font-family:'Inter',sans-serif;display:flex;height:160px;">
+                <div style="background:#3f0e40;width:50px;display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:8px;">
+                  <div style="width:30px;height:30px;background:#ECB22E;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:900;color:#1a1a1a;">AC</div>
+                  <div style="width:30px;height:30px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;">#</div>
+                  <div style="width:30px;height:30px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;">@</div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;">
+                  <div style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <div style="color:#fff;font-size:0.78rem;font-weight:700;"># general</div>
+                    <div style="color:#97a0a8;font-size:0.65rem;">42 miembros</div>
+                  </div>
+                  <div style="flex:1;padding:8px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden;">
+                    <div style="display:flex;gap:7px;align-items:flex-start;">
+                      <div style="width:24px;height:24px;background:#2EB67D;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;">M</div>
+                      <div>
+                        <span style="color:#ECB22E;font-size:0.7rem;font-weight:700;">María</span>
+                        <span style="color:#97a0a8;font-size:0.65rem;margin-left:5px;">10:32</span>
+                        <div style="color:#d1d2d3;font-size:0.7rem;margin-top:2px;">Deploy listo para revisión ✅</div>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:7px;align-items:flex-start;">
+                      <div style="width:24px;height:24px;background:#E01E5A;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;">C</div>
+                      <div>
+                        <span style="color:#ECB22E;font-size:0.7rem;font-weight:700;">Carlos</span>
+                        <span style="color:#97a0a8;font-size:0.65rem;margin-left:5px;">10:35</span>
+                        <div style="color:#d1d2d3;font-size:0.7rem;margin-top:2px;">Aprobado 🚀</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Consistency callout -->
+        <div class="marca-callout">
+          <div class="marca-callout-icon">💡</div>
+          <div>
+            <strong>Consistencia por encima de todo.</strong> El reconocimiento de marca no viene del color en sí, sino de su uso coherente y repetido en todos los puntos de contacto: web, app, empaque, publicidad. Coca-Cola no es solo roja — es <em>siempre</em> la misma roja exacta (Pantone 484).
+          </div>
+        </div>
+
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('comparador')">← Comparador</button>
+        <span class="page-indicator">8 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('reglas')">7 Reglas →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: REGLAS =================== -->
+    <div class="page" id="page-reglas">
+      <div class="page-inner">
+        <div class="section-header">
+          <div class="section-tag">Resumen</div>
+          <h2 class="section-title">Las 7 Reglas de Oro</h2>
+          <p class="section-desc">Principios concretos que puedes aplicar desde hoy en cualquier proyecto de diseño de interfaces.</p>
+        </div>
+        <div class="rules-grid">
+          <div class="rule-card"><div class="rule-num">01</div><h4>Contraste mínimo 4.5:1</h4><p>Para texto normal sobre fondo. Usa herramientas como <em>Coolors</em> o el DevTools del navegador.</p></div>
+          <div class="rule-card"><div class="rule-num">02</div><h4>Regla 60-30-10</h4><p>60% fondo, 30% elementos secundarios, 10% acento. Nunca más de 3 colores principales.</p></div>
+          <div class="rule-card"><div class="rule-num">03</div><h4>Color + texto + ícono</h4><p>Nunca uses el color como único indicador de estado. Siempre acompáñalo de una señal visual alternativa.</p></div>
+          <div class="rule-card"><div class="rule-num">04</div><h4>Respeta la semántica</h4><p>Verde = éxito, Rojo = error, Amarillo = advertencia, Azul = información. No rompas estas convenciones.</p></div>
+          <div class="rule-card"><div class="rule-num">05</div><h4>Fondos oscuros: grises elevados</h4><p>En modo oscuro, usa #121212 como base y eleva con capas de gris. No uses negro puro (#000000).</p></div>
+          <div class="rule-card"><div class="rule-num">06</div><h4>Testea con daltonismo</h4><p>Usa el simulador de Chrome DevTools (Rendering → Emulate vision deficiencies) antes de publicar.</p></div>
+          <div class="rule-card"><div class="rule-num">07</div><h4>Menos colores, más intención</h4><p>Una paleta de 2-3 colores usados con propósito siempre supera a una paleta de 8 colores sin sistema.</p></div>
+        </div>
+        <!-- Footer inside last page -->
+        <div class="page-footer">
+          <div class="footer-brand">
+            <div class="footer-logo">🎨 ColorUX</div>
+            <p>Una guía práctica de teoría del color para diseñadores y desarrolladores de producto.</p>
+          </div>
+          <div class="footer-refs">
+            <h5>Referencias</h5>
+            <ul>
+              <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank">WCAG 2.1 Guidelines</a></li>
+              <li><a href="https://m3.material.io/styles/color" target="_blank">Material Design 3 Color</a></li>
+              <li><a href="https://coolors.co/contrast-checker" target="_blank">Coolors Contrast Checker</a></li>
+              <li><a href="https://developer.chrome.com/docs/devtools/" target="_blank">Chrome DevTools Accessibility</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="page-nav-bar">
+        <button class="page-nav-btn" onclick="navigate('marca')">← Identidad</button>
+        <span class="page-indicator">9 de 10</span>
+        <button class="page-nav-btn primary-nav-btn" onclick="navigate('laboratorio')">Laboratorio →</button>
+      </div>
+    </div>
+
+    <!-- =================== PAGE: LABORATORIO =================== -->
     <div class="page" id="page-laboratorio">
       <div class="page-inner">
         <div class="section-header">
-          <div class="section-tag">🎛️ Experimento</div>
+          <div class="section-tag">Experimento</div>
           <h2 class="section-title">Laboratorio Interactivo de Color</h2>
           <p class="section-desc">Ajusta, combina y descubre el color en acción. Modelos RGB/HEX/HSL, armonías, psicología, daltonismo y regla 60-30-10.</p>
         </div>
-
-        <!-- Grid de 2 columnas en desktop, con los 6 módulos interactivos -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px;">
           
           <!-- MÓDULO 1: MODELOS RGB/HEX/HSL -->
           <div class="lab-card">
-            <h3 class="lab-card-title">🎨 Modelos de Color</h3>
-            <div class="lab-control-group">
+            <h3 class="lab-card-title">Modelos de Color</h3>
+            <div>
               <label>🔴 Rojo (R)</label>
-              <input type="range" id="lab-r" min="0" max="255" value="100" class="lab-slider">
+              <input type="range" id="lab-r" min="0" max="255" value="100" style="width:100%">
               <label>🟢 Verde (G)</label>
-              <input type="range" id="lab-g" min="0" max="255" value="150" class="lab-slider">
+              <input type="range" id="lab-g" min="0" max="255" value="150" style="width:100%">
               <label>🔵 Azul (B)</label>
-              <input type="range" id="lab-b" min="0" max="255" value="200" class="lab-slider">
+              <input type="range" id="lab-b" min="0" max="255" value="200" style="width:100%">
             </div>
-            <div class="lab-color-preview" id="lab-preview" style="background: rgb(100,150,200);"></div>
-            <div class="lab-values">
-              <div><strong>RGB:</strong> <span id="lab-rgb">rgb(100,150,200)</span></div>
-              <div><strong>HEX:</strong> <span id="lab-hex">#6496c8</span></div>
-              <div><strong>HSL:</strong> <span id="lab-hsl">hsl(210°, 48%, 59%)</span></div>
-            </div>
-            <p class="lab-note">💡 HSL es más intuitivo: Matiz (color), Saturación (pureza), Luminosidad (brillo).</p>
+            <div id="lab-preview" style="height:80px; background:rgb(100,150,200); border-radius:12px; margin:12px 0;"></div>
+            <div><strong>RGB:</strong> <span id="lab-rgb">rgb(100,150,200)</span></div>
+            <div><strong>HEX:</strong> <span id="lab-hex">#6496c8</span></div>
+            <div><strong>HSL:</strong> <span id="lab-hsl">hsl(210°,48%,59%)</span></div>
+            <p class="lab-note">HSL es más intuitivo: Matiz, Saturación, Luminosidad.</p>
           </div>
 
-          <!-- MÓDULO 2: CÍRCULO CROMÁTICO BÁSICO (selector de matiz) -->
+          <!-- MÓDULO 2: CÍRCULO CROMÁTICO BÁSICO -->
           <div class="lab-card">
-            <h3 class="lab-card-title">🔄 Círculo Cromático</h3>
-            <div class="chromatic-circle" id="chromatic-circle">
-              <!-- 12 colores generados con JS -->
-            </div>
-            <div id="circle-feedback" class="circle-feedback">Haz clic en un color para ver su matiz (Hue) en HSL.</div>
-            <div id="selected-hue" class="selected-hue-display"></div>
-            <p class="lab-note">Cada uno representa un matiz (0° = rojo, 120° = verde, 240° = azul).</p>
+            <h3 class="lab-card-title">Círculo Cromático</h3>
+            <div id="chromatic-circle" style="display: grid; grid-template-columns: repeat(6,1fr); gap: 8px;"></div>
+            <div id="circle-feedback" style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">Haz clic en un color</div>
+            <div id="selected-hue" style="font-size:0.7rem;"></div>
           </div>
 
           <!-- MÓDULO 3: GENERADOR DE ARMONÍAS -->
           <div class="lab-card">
-            <h3 class="lab-card-title">🌈 Armonías de Color</h3>
-            <div class="harmony-controls">
-              <label>Color base:</label>
-              <input type="color" id="harmony-base" value="#3b82f6">
-              <label>Tipo de armonía:</label>
-              <select id="harmony-type">
-                <option value="mono">Monocromática</option>
-                <option value="comp">Complementaria</option>
-                <option value="analoga">Análoga</option>
-                <option value="triadica">Triádica</option>
-              </select>
-            </div>
-            <div class="harmony-palette" id="harmony-palette">
-              <!-- paleta dinámica -->
-            </div>
-            <p class="lab-note">✅ Cada esquema tiene un propósito: contraste máximo (complementaria), suavidad (análoga), equilibrio (triádica).</p>
+            <h3 class="lab-card-title">Armonías de Color</h3>
+            <label>Color base:</label>
+            <input type="color" id="harmony-base" value="#3b82f6">
+            <label>Tipo:</label>
+            <select id="harmony-type">
+              <option value="mono">Monocromática</option>
+              <option value="comp">Complementaria</option>
+              <option value="analoga">Análoga</option>
+              <option value="triadica">Triádica</option>
+            </select>
+            <div id="harmony-palette" style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;"></div>
           </div>
 
           <!-- MÓDULO 4: SIMULADOR DE DALTONISMO -->
           <div class="lab-card">
-            <h3 class="lab-card-title">👁️ Simulador de Daltonismo</h3>
-            <select id="dalton-filter" class="lab-select">
+            <h3 class="lab-card-title">Simulador de Daltonismo</h3>
+            <select id="dalton-filter">
               <option value="none">Visión normal</option>
-              <option value="protanopia">Protanopía (rojo-deficiente)</option>
-              <option value="deuteranopia">Deuteranopía (verde-deficiente)</option>
-              <option value="tritanopia">Tritanopía (azul-deficiente)</option>
+              <option value="protanopia">Protanopía</option>
+              <option value="deuteranopia">Deuteranopía</option>
+              <option value="tritanopia">Tritanopía</option>
             </select>
-            <div id="dalton-sample" class="dalton-sample">
-              <div class="dalton-color-row">
-                <div class="dalton-swatch" style="background:#ef4444;"></div>
-                <div class="dalton-swatch" style="background:#22c55e;"></div>
-                <div class="dalton-swatch" style="background:#3b82f6;"></div>
-                <div class="dalton-swatch" style="background:#facc15;"></div>
-                <div class="dalton-swatch" style="background:#a855f7;"></div>
+            <div id="dalton-sample" style="margin-top:12px; background:#1e293b; padding:12px; border-radius:12px;">
+              <div style="display:flex; gap:8px;">
+                <div style="width:40px;height:40px;background:#ef4444; border-radius:8px;"></div>
+                <div style="width:40px;height:40px;background:#22c55e; border-radius:8px;"></div>
+                <div style="width:40px;height:40px;background:#3b82f6; border-radius:8px;"></div>
               </div>
-              <div class="dalton-text">Texto rojo sobre fondo ¿contrasta?</div>
-              <div class="dalton-gradient"></div>
+              <div style="margin-top:8px; color:#ef4444;">Texto rojo</div>
+              <div style="height:12px; background:linear-gradient(90deg,#ef4444,#22c55e,#3b82f6); margin-top:8px; border-radius:6px;"></div>
             </div>
-            <p class="lab-note">⚠️ No todos ven los mismos colores. Usa siempre patrones o etiquetas.</p>
           </div>
 
           <!-- MÓDULO 5: PSICOLOGÍA DEL COLOR INTERACTIVA -->
           <div class="lab-card">
-            <h3 class="lab-card-title">🧠 Psicología del Color</h3>
-            <div class="psycho-grid" id="psycho-grid">
-              <!-- 8 colores interactivos -->
-            </div>
-            <div id="psycho-message" class="psycho-message">💡 Haz clic en cualquier color para conocer su significado psicológico y cultural.</div>
+            <h3 class="lab-card-title">Psicología del Color</h3>
+            <div id="psycho-grid" style="display:flex; gap:12px; flex-wrap:wrap;"></div>
+            <div id="psycho-message" style="margin-top:12px; background:rgba(255,255,255,0.05); padding:12px; border-radius:12px; min-height:70px;">💡 Haz clic en un color</div>
           </div>
 
           <!-- MÓDULO 6: REGLA 60-30-10 DEMO -->
           <div class="lab-card">
-            <h3 class="lab-card-title">📐 Regla 60-30-10</h3>
-            <div class="rule-controls">
-              <div><label>Color 60% (fondo):</label><input type="color" id="rule-bg" value="#0f172a"></div>
-              <div><label>Color 30% (secundario):</label><input type="color" id="rule-secondary" value="#1e293b"></div>
-              <div><label>Color 10% (acento):</label><input type="color" id="rule-accent" value="#f97316"></div>
+            <h3 class="lab-card-title">Regla 60-30-10</h3>
+            <div>
+              <label>60% fondo: </label><input type="color" id="rule-bg" value="#0f172a">
+              <label>30% secundario: </label><input type="color" id="rule-secondary" value="#1e293b">
+              <label>10% acento: </label><input type="color" id="rule-accent" value="#f97316">
             </div>
-            <div class="rule-demo" id="rule-demo">
-              <div class="rule-header" style="background: var(--rule-secondary, #1e293b);">Barra superior (30%)</div>
-              <div class="rule-body" style="background: var(--rule-bg, #0f172a);">
-                <p>Contenido principal (60% fondo). Este espacio ocupa la mayor parte visual.</p>
-                <button class="rule-cta" style="background: var(--rule-accent, #f97316);">Acción principal (10%)</button>
-                <p class="rule-note-text">El acento atrae la atención solo donde es necesario.</p>
+            <div id="rule-demo" style="border-radius:12px; overflow:hidden; margin-top:12px;">
+              <div style="padding:10px; background:#1e293b; color:white; text-align:center;">Barra superior (30%)</div>
+              <div style="padding:16px; background:#0f172a; color:white; text-align:center;">
+                Contenido principal (60% fondo)
+                <button style="display:block; margin:10px auto; background:#f97316; border:none; padding:6px 12px; border-radius:20px; cursor:default;">Acción (10%)</button>
               </div>
             </div>
-            <p class="lab-note">60% fondo neutro · 30% componentes secundarios · 10% llamadas a la acción.</p>
           </div>
         </div>
-
-        <!-- Explicación final -->
-        <div class="lab-conclusion">
+        <div class="lab-conclusion" style="margin-top:32px; background:rgba(99,102,241,0.08); border-radius:1rem; padding:1rem; text-align:center;">
           <h4>🔬 ¿Qué has aprendido aquí?</h4>
-          <p>Este laboratorio complementa la teoría del informe con <strong>interactividad total</strong>: ahora puedes experimentar con modelos de color, armonías, daltonismo, psicología y la regla 60-30-10. Todos estos conceptos son esenciales para diseñar interfaces centradas en la persona (IPO).</p>
+          <p>Este laboratorio completa los conceptos del informe: modelos RGB/HEX/HSL, armonías, daltonismo, psicología y la regla 60-30-10.</p>
         </div>
       </div>
       <div class="page-nav-bar">
