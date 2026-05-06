@@ -3,7 +3,7 @@
 /* ============================================================
    STATE — declared before boot to avoid TDZ crashes
    ============================================================ */
-const PAGES = ['home','principios','contraste','buenos','malos','ecommerce','comparador','marca','reglas'];
+const PAGES = ['home','principios','contraste','buenos','malos','ecommerce','comparador','marca','reglas','laboratorio'];
 let currentPage    = null;
 let contrastReady  = false;
 let comparatorReady = false;
