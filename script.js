@@ -1,9 +1,10 @@
-/* ===== ROUTER Y FUNCIONES GLOBALES ===== */
+/* ===== ROUTER ORIGINAL + NUEVOS MÓDULOS ===== */
 const PAGES = ['home', 'principios', 'contraste', 'buenos', 'malos', 'ecommerce', 'comparador', 'marca', 'reglas'];
 let currentPage = null;
 let contrastReady = false;
 let comparatorReady = false;
 
+// FUNCIÓN DE NAVEGACIÓN ORIGINAL (se mantiene)
 function navigate(pageId) {
   if (!PAGES.includes(pageId)) pageId = 'home';
   if (pageId === currentPage) return;
@@ -21,7 +22,7 @@ function navigate(pageId) {
   if (next) {
     next.style.display = 'flex';
     requestAnimationFrame(() => next.classList.add('active'));
-    next.scrollTop = 0; // reiniciar scroll al inicio
+    next.scrollTop = 0;
   }
   currentPage = pageId;
   history.replaceState(null, '', '#' + pageId);
@@ -30,7 +31,8 @@ function navigate(pageId) {
   });
   document.getElementById('mobile-menu').classList.remove('open');
 
-  // Inicializar módulos según página
+  // Inicializar módulos interactivos según la página
+  if (pageId === 'home') initHomeModule();
   if (pageId === 'principios') initPrincipiosModules();
   if (pageId === 'contraste') {
     initContrastTool();
@@ -42,6 +44,7 @@ function navigate(pageId) {
   if (pageId === 'comparador') initComparator();
 }
 
+// Eventos de navegación originales
 document.querySelectorAll('.nav-link, .mob-link').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -57,17 +60,36 @@ function toggleMobileMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 
-/* ===== PRINCIPIOS: MÓDULOS INTERACTIVOS ===== */
+/* ===== MÓDULOS INTERACTIVOS NUEVOS ===== */
+
+// 1. Módulo de HOME
+function initHomeModule() {
+  const colorPicker = document.getElementById('home-color');
+  const bgPicker = document.getElementById('home-bg');
+  const demoArea = document.getElementById('home-demo-area');
+  const demoBtn = document.getElementById('home-demo-btn');
+  if (colorPicker && bgPicker && demoArea && demoBtn) {
+    function updateHome() {
+      demoArea.style.backgroundColor = bgPicker.value;
+      demoBtn.style.backgroundColor = colorPicker.value;
+    }
+    colorPicker.addEventListener('input', updateHome);
+    bgPicker.addEventListener('input', updateHome);
+    updateHome();
+  }
+}
+
+// 2. Módulos de PRINCIPIOS (RGB, armonías, daltonismo, regla 60-30-10)
 function initPrincipiosModules() {
-  // 1. Modelos RGB/HEX/HSL con demo que cambia de color
-  const r = document.getElementById('mod-r');
-  const g = document.getElementById('mod-g');
-  const b = document.getElementById('mod-b');
-  const preview = document.getElementById('mod-preview');
-  const rgbSpan = document.getElementById('mod-rgb');
-  const hexSpan = document.getElementById('mod-hex');
-  const hslSpan = document.getElementById('mod-hsl');
-  const demoArea = document.getElementById('mod-demo-area');
+  // RGB
+  const r = document.getElementById('princ-r');
+  const g = document.getElementById('princ-g');
+  const b = document.getElementById('princ-b');
+  const preview = document.getElementById('princ-preview');
+  const rgbSpan = document.getElementById('princ-rgb');
+  const hexSpan = document.getElementById('princ-hex');
+  const hslSpan = document.getElementById('princ-hsl');
+  const demoArea = document.getElementById('princ-demo');
   function rgbToHex(r,g,b) { return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1); }
   function rgbToHsl(r,g,b) {
     r/=255; g/=255; b/=255;
@@ -102,7 +124,7 @@ function initPrincipiosModules() {
     updateRGB();
   }
 
-  // 2. Círculo cromático
+  // Círculo cromático
   const circleDiv = document.getElementById('chromatic-circle');
   if(circleDiv && circleDiv.children.length === 0) {
     const hues = [0,30,60,90,120,150,180,210,240,270,300,330];
@@ -119,11 +141,11 @@ function initPrincipiosModules() {
     });
   }
 
-  // 3. Armonías: generador de paleta y al hacer clic en un color, aplicarlo al demo
+  // Armonías
   const baseColor = document.getElementById('harmony-base');
   const harmonyType = document.getElementById('harmony-type');
   const paletteDiv = document.getElementById('harmony-palette');
-  const harmonyDemoArea = document.getElementById('harmony-demo-area');
+  const harmonyDemo = document.getElementById('harmony-demo');
   function hexToRgb(hex) {
     let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
     return [r,g,b];
@@ -197,12 +219,7 @@ function initPrincipiosModules() {
       swatch.className = 'harmony-swatch';
       swatch.style.backgroundColor = col;
       swatch.addEventListener('click', () => {
-        if(harmonyDemoArea) {
-          harmonyDemoArea.style.backgroundColor = col;
-          // también cambiar color de los botones del demo para que contraste
-          let btns = harmonyDemoArea.querySelectorAll('.demo-btn');
-          btns.forEach(btn => btn.style.backgroundColor = col);
-        }
+        if(harmonyDemo) harmonyDemo.style.backgroundColor = col;
       });
       paletteDiv.appendChild(swatch);
     });
@@ -213,10 +230,10 @@ function initPrincipiosModules() {
     updateHarmony();
   }
 
-  // 4. Daltonismo
+  // Daltonismo
   const daltonFilter = document.getElementById('dalton-filter');
-  const daltonDemo = document.getElementById('dalton-demo-area');
-  if(daltonFilter && daltonDemo) {
+  const daltonSample = document.getElementById('dalton-sample');
+  if(daltonFilter && daltonSample) {
     if(!document.getElementById('dalton-filters')) {
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.setAttribute("style", "position:absolute; width:0; height:0");
@@ -228,25 +245,26 @@ function initPrincipiosModules() {
     }
     daltonFilter.addEventListener('change', (e) => {
       let val = e.target.value;
-      if(val === 'none') daltonDemo.style.filter = 'none';
-      else daltonDemo.style.filter = `url(#${val})`;
+      if(val === 'none') daltonSample.style.filter = 'none';
+      else daltonSample.style.filter = `url(#${val})`;
     });
   }
 
-  // 5. Regla 60-30-10
+  // Regla 60-30-10
   const rule60 = document.getElementById('rule60');
   const rule30 = document.getElementById('rule30');
   const rule10 = document.getElementById('rule10');
-  const ruleHeader = document.querySelector('#rule-demo-area .rule-header');
-  const ruleBody = document.querySelector('#rule-demo-area .rule-body');
-  const ruleCta = document.querySelector('#rule-demo-area .rule-cta');
-  function updateRule() {
-    let bg = rule60.value, sec = rule30.value, acc = rule10.value;
-    if(ruleBody) ruleBody.style.backgroundColor = bg;
-    if(ruleHeader) ruleHeader.style.backgroundColor = sec;
-    if(ruleCta) ruleCta.style.backgroundColor = acc;
-  }
-  if(rule60 && rule30 && rule10) {
+  const ruleDemo = document.getElementById('rule-demo');
+  if(rule60 && rule30 && rule10 && ruleDemo) {
+    function updateRule() {
+      let bg = rule60.value, sec = rule30.value, acc = rule10.value;
+      const header = ruleDemo.querySelector('div:first-child');
+      const body = ruleDemo.querySelector('div:nth-child(2)');
+      const btn = ruleDemo.querySelector('button');
+      if(header) header.style.backgroundColor = sec;
+      if(body) body.style.backgroundColor = bg;
+      if(btn) btn.style.backgroundColor = acc;
+    }
     rule60.addEventListener('input', updateRule);
     rule30.addEventListener('input', updateRule);
     rule10.addEventListener('input', updateRule);
@@ -254,7 +272,7 @@ function initPrincipiosModules() {
   }
 }
 
-/* ===== CONTRASTE ===== */
+// 3. CONTRASTE (original + demo extra)
 function hexToRgb(hex) {
   hex = hex.replace('#', '');
   if(hex.length===3) hex = hex.split('').map(c=>c+c).join('');
@@ -305,13 +323,13 @@ function initContrastDemo() {
   }
 }
 
-/* ===== BUENOS USOS: demo extra jerarquía ===== */
+// 4. BUENOS USOS: demo jerarquía
 function initHierarchyExtra() {
   const pri = document.getElementById('hierarchy-pri');
   const sec = document.getElementById('hierarchy-sec');
-  const textPri = document.getElementById('hierarchy-text-pri');
-  const mainBtn = document.getElementById('hierarchy-test-btn');
-  const secBtn = document.getElementById('hierarchy-test-sec');
+  const textPri = document.getElementById('hierarchy-text');
+  const mainBtn = document.getElementById('hierarchy-main-btn');
+  const secBtn = document.getElementById('hierarchy-sec-btn');
   if(pri && sec && textPri && mainBtn && secBtn) {
     function update() {
       mainBtn.style.backgroundColor = pri.value;
@@ -325,7 +343,7 @@ function initHierarchyExtra() {
   }
 }
 
-/* ===== E-COMMERCE CTA ===== */
+// 5. E-COMMERCE: CTA personalizable
 function initEcommerceCTA() {
   const ctaColor = document.getElementById('ecom-cta-color');
   const ctaText = document.getElementById('ecom-cta-text');
@@ -338,20 +356,20 @@ function initEcommerceCTA() {
   }
 }
 
-/* ===== MARCA: psicología ===== */
+// 6. MARCA: psicología interactiva
 function initPsychoModule() {
   const psychoGrid = document.getElementById('psycho-colors');
   const psychoMsg = document.getElementById('psycho-message');
   if(psychoGrid && psychoGrid.children.length === 0) {
     const colors = [
-      { name: 'Rojo', hex: '#ef4444', msg: '🔴 Rojo: alerta, error, pasión. En China: buena suerte.' },
-      { name: 'Verde', hex: '#22c55e', msg: '🟢 Verde: éxito, confirmación, naturaleza.' },
-      { name: 'Azul', hex: '#3b82f6', msg: '🔵 Azul: confianza, seguridad, profesionalismo.' },
-      { name: 'Amarillo', hex: '#facc15', msg: '🟡 Amarillo: advertencia, optimismo. Alta luminosidad.' },
-      { name: 'Naranja', hex: '#f97316', msg: '🟠 Naranja: energía, acción, creatividad.' },
-      { name: 'Morado', hex: '#a855f7', msg: '🟣 Morado: lujo, creatividad, misterio.' },
-      { name: 'Negro', hex: '#111111', msg: '⚫ Negro: elegancia, poder, sofisticación.' },
-      { name: 'Blanco', hex: '#ffffff', msg: '⚪ Blanco: pureza, limpieza, minimalismo.' }
+      { name: 'Rojo', hex: '#ef4444', msg: '🔴 Rojo: alerta, error, pasión. En China: buena suerte. Ideal para botones destructivos.' },
+      { name: 'Verde', hex: '#22c55e', msg: '🟢 Verde: éxito, confirmación, naturaleza. Cuidado: en algunos países asiáticos representa pérdida en bolsa.' },
+      { name: 'Azul', hex: '#3b82f6', msg: '🔵 Azul: confianza, seguridad, profesionalismo. Usado por bancos y tecnología.' },
+      { name: 'Amarillo', hex: '#facc15', msg: '🟡 Amarillo: advertencia, optimismo. Alta luminosidad, puede fatigar.' },
+      { name: 'Naranja', hex: '#f97316', msg: '🟠 Naranja: energía, acción, creatividad. Ideal para CTAs secundarios.' },
+      { name: 'Morado', hex: '#a855f7', msg: '🟣 Morado: lujo, creatividad, misterio. Marcas premium y cosméticos.' },
+      { name: 'Negro', hex: '#111111', msg: '⚫ Negro: elegancia, poder, sofisticación. En modo oscuro, usar grises elevados.' },
+      { name: 'Blanco', hex: '#ffffff', msg: '⚪ Blanco: pureza, limpieza, minimalismo. Para modo claro, fondo base.' }
     ];
     colors.forEach(c => {
       const chip = document.createElement('div');
@@ -364,12 +382,12 @@ function initPsychoModule() {
   }
 }
 
-/* ===== COMPARADOR (scenarios) ===== */
+// 7. COMPARADOR (original)
 const scenarios = {
-  ecommerce: { bad: `<div style="background:#ff6600;padding:14px;border-radius:8px;"><div style="color:#ff0000;">¡OFERTA!</div><button style="background:#00ff00;color:#ff0000;">Comprar</button></div>`, good: `<div style="background:#0f172a;padding:14px;"><div style="color:#f97316;">Oferta</div><button style="background:#f97316;">Comprar</button></div>`, explanation: `Ejemplo de e-commerce.` },
-  dashboard: { bad: `<div>Dashboard malo</div>`, good: `<div>Dashboard bueno</div>`, explanation: `Ejemplo de dashboard.` },
-  login: { bad: `<div>Login malo</div>`, good: `<div>Login bueno</div>`, explanation: `Ejemplo de login.` },
-  alerts: { bad: `<div>Alertas malas</div>`, good: `<div>Alertas buenas</div>`, explanation: `Ejemplo de alertas.` }
+  ecommerce: { bad: `<div style="background:#ff6600;padding:14px;border-radius:8px;"><div style="color:#ff0000;">¡OFERTA!</div><button style="background:#00ff00;color:#ff0000;">Comprar</button></div>`, good: `<div style="background:#0f172a;padding:14px;"><div style="color:#f97316;">Oferta</div><button style="background:#f97316;">Comprar</button></div>`, explanation: `El diseño incorrecto usa colores saturados que compiten entre sí. El correcto usa un único acento.` },
+  dashboard: { bad: `<div style="background:#fff;padding:14px;color:#ccc;">Datos ilegibles</div>`, good: `<div style="background:#0f172a;padding:14px;color:#fff;">Datos claros</div>`, explanation: `Contraste insuficiente en el mal diseño.` },
+  login: { bad: `<div style="background:linear-gradient(135deg,#FF0080,#FF8C00);padding:14px;">Formulario caótico</div>`, good: `<div style="background:#fff;padding:14px;">Formulario limpio</div>`, explanation: `Demasiados colores generan desconfianza.` },
+  alerts: { bad: `<div style="background:#ff0000;color:#fff;">Éxito (rojo)</div><div style="background:#00cc00;color:#fff;">Error (verde)</div>`, good: `<div style="background:#f0fdf4;color:#166534;">Éxito (verde)</div><div style="background:#fef2f2;color:#dc2626;">Error (rojo)</div>`, explanation: `Semántica invertida: rojo debe ser error, verde éxito.` }
 };
 function setScenario(key) {
   document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.remove('active'));
